@@ -1,0 +1,8 @@
+from django.urls import path
+from .views import ques
+
+urlpatterns = [
+   
+    path('', ques, name='ques'),
+    
+]
