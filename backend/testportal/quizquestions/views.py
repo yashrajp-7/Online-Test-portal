@@ -11,7 +11,20 @@ from rest_framework.response import Response
 def ques(request):
    if(request.method == 'GET'):
       res=list(Questions.objects.filter(department=request.GET.get("stream")).values())
-      print(res)
-      return JsonResponse({'data':res})
+      result=list()
+      for i in res:
+         d=dict()
+         d['question']=i['question']
+         l=list()
+         l.append(i['option1'])
+         l.append(i['option2'])
+         l.append(i['option3'])
+         l.append(i['option4'])
+         d['options']=l
+         d['answer']=i['answer']
+         result.append(d)
+      print(result)
+         
+      return JsonResponse({'data':result})
    else:
       return JsonResponse({'error': 'Need GET request.'},status=400)
