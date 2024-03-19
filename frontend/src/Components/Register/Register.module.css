@@ -1,0 +1,39 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    align-items: center;
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+  }
+  
+  .leftSide {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .rightSide {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .register input {
+    border-radius: 20px;
+    border: 2px solid lightgrey;
+    outline: none;
+    color: #1d2129;
+    margin: 2% 0;
+    width: 90%;
+    padding: 12px;
+    font-size: 16px;
+  }
+   
+
+   
