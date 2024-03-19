@@ -4,5 +4,4 @@ from .views import ques
 urlpatterns = [
    
     path('', ques, name='ques'),
-    
 ]
