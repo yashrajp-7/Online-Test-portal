@@ -71,6 +71,7 @@ const Stream = () => {
   };
 
   return (
+    <div className="outer">
     <div className="component">
       <h3>Before starting your test:</h3>
       <div className="dropdowns">
@@ -111,6 +112,7 @@ const Stream = () => {
           Confirm   <span>&rarr;</span>
         </button>
       </div>
+    </div>
     </div>
   );
 };

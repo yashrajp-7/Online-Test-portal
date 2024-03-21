@@ -11,12 +11,14 @@ export default function Congrats() {
     }
     const { width, height } = useWindowSize()
     return (
+        <div className='outer'>
         <div className="congrats-container">
             <Confetti width={width} height={height}/>
             <img src={logo} alt="congrats" />
             <h1>Congratulations! Your Test Has Been Submitted!!!!!</h1>
             <h2>Your scored {marks}/{outoff}</h2>
             <button onClick={handleClick}>Log Out</button>
+        </div>
         </div>
     )
 }

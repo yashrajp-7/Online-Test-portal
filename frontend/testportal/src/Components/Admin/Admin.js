@@ -121,7 +121,7 @@ const Admin = () => {
 
 return (
   
-  <div style={{width:"100%"}}>
+  <div style={{width:"100%",height:"100%"}}>
     <Navbar /> 
     <div className={"container"}>
     <div className={"admin"}>
@@ -143,7 +143,7 @@ return (
 
   <button className={"button_common"} onClick={handleSave}>Save</button>
   <br></br>
-  <label className="labeldownload"><b>Download Test Results</b></label> 
+  <label className="labeldownload"><b>Download Test Results  </b></label> 
   <button className={"button_result"} onClick={handleDownload}>Download </button> 
 </div>
 
