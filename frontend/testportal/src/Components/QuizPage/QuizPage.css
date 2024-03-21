@@ -1,0 +1,189 @@
+/* TestPortal.css*/
+
+/* 
+body {
+    font-family: Arial, sans-serif;
+    background-color: white;
+    height:100px;
+  }
+   */
+  
+  .skill-test-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  
+  .skill-test {
+    background-color: none;
+    overflow-x: hidden;
+    overflow-y:scroll;
+    height:650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+  }
+  
+
+  .section h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+
+  .section ul {
+   
+    padding-left: 10;
+  }
+  
+  .section li {
+    margin-bottom: 10px;
+  }
+  
+
+  button {
+    background-color: #f9a825;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+
+  .save-button {
+    margin-top: 20px;
+    background-color: #2196F3; 
+    margin-right: 100px;
+  }
+  
+  
+  .submit-button {
+    background-color: #f44336;
+    margin-left:150px; 
+  }
+  
+
+  @media screen and (max-width: 600px) {
+    .ml-skill-test-container {
+      padding: 10px;
+    }
+  }
+  
+  .navbar-section {
+    background-color: #f9a825;
+    color: white;
+    padding: 15px;
+    width: 100%;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items:center;
+    
+  }
+  .navbar-section h2 {
+ 
+    font-size: 25px;
+  }
+  .result {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff;
+    padding: 40px; 
+    border: 2px solid #dddddd; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    z-index: 9999;
+    text-align: center; 
+  }
+  
+  .result p {
+    margin-bottom: 50px; 
+  }
+  
+  .result button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .result button:hover {
+    background-color: #45a049;
+  }
+
+
+  .timer-container {
+    position: fixed;
+    top: 9%;
+    right: calc(1vw + 20px); 
+    transform: translateY(-50%);
+    background-color: none; 
+    padding: 10px;
+    border-radius: 5px;
+   
+  }
+  
+  .timer {
+    font-size: 24px; 
+    padding: 10px 20px;
+    background-color: #4CAF50; 
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    position: relative;
+  }
+  
+  .timer::before {
+    content: '⏳';
+    margin-right: 5px;
+  }
+  
+  header {
+    background-color: #f9a825;
+    color: white;
+    padding: 30px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+
+  quiz {
+    width: 100%; 
+  }
+  
+  .question {
+    text-align: left; 
+    margin-bottom: 20px; 
+  }
+  
+  .option {
+    margin-top: 5px; 
+    display: flex;
+    align-items: center;
+  }
+  
+  .option input[type="radio"] {
+    margin-right: 5px; 
+  }
+  
+  .option label {
+    font-size: 16px; 
+  }
+  
+  
+  
+
+  
+  

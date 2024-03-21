@@ -1,0 +1,76 @@
+
+
+
+.register {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  align-items: center;
+  border-radius: 15px;
+  padding: 20px;
+  
+
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.leftSide {
+  display: flex;
+  flex-direction: column;
+}
+
+.rightSide {
+  display: flex;
+  flex-direction: column;
+}
+
+.register input {
+  border-radius: 20px;
+  border: 2px solid lightgrey;
+  outline: none;
+  color: #1d2129;
+  margin: 2% 0;
+  width: 90%;
+  padding: 12px;
+  font-size: 16px;
+  
+}
+ 
+
+
+.error {
+  color: red;
+  text-align: left;
+  margin: auto;
+  font-size: 16px;
+  padding: 0px 1rem;
+}
+
+.button1{
+background-color: #ffc107;
+  color: white;
+  margin-top: 20px;
+  
+   margin-left: 500px;
+
+}
+.outer
+{
+  background-color: #FAECDD;
+    width: 100%;
+    height:100%;
+    background-size: 90%;
+    background-repeat: no-repeat;
+  
+}
+.register label {
+ 
+  text-align: left;
+  float: left;
+  margin-left:15px;
+  font-weight: bold;
+}
