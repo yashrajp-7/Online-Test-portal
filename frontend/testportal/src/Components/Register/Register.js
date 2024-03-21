@@ -246,7 +246,12 @@ const Register = () => {
     sfid: localStorage.getItem("sfid"),
    
   });
-
+  useEffect(()=>{
+    if(localStorage.getItem("signup")==="done")
+    {
+      window.location.href="/instruction"
+    }
+  })
   const changeHandler = (e) => {
     const { name, value } = e.target;
     setUserDetails({
@@ -254,7 +259,21 @@ const Register = () => {
       [name]: value,
     });
   };
-
+  useEffect(()=>{
+    if(localStorage.getItem("loginemail")===null || localStorage.getItem("test_taken")==="true")
+    {
+      window.location.href="/"
+    }
+  })
+  useEffect(()=>
+  {
+    const handleBack=()=>
+    {
+      window.history.replaceState(null,null,window.location.pathname);
+    };
+    handleBack();
+    return ()=>{window.history.pushState({},'',window.location.pathname)};
+  },[]);
 
 
   const validateForm = () => {
@@ -328,7 +347,7 @@ const Register = () => {
     <div className={"outer"}>
       <div className={"register"}>
         <form>
-          {/* <h1>Create your account</h1> */}
+          <h1>Personal Details</h1>
           <div className={"gridContainer"}>
             <div className={"leftSide"}>
               <label>Name:</label>

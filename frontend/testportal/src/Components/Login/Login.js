@@ -20,6 +20,11 @@ const Login = () => {
       [name]: value,
     });
   };
+  useEffect(()=>{
+    
+    console.log(localStorage.clear());
+    console.log(console.clear());
+  },[]);
   const validateForm = (values) => {
     const error = {};
     const regex = /^[^\s+@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -37,8 +42,7 @@ const Login = () => {
   const loginHandler = async(e) => {
     e.preventDefault();
     setFormErrors(validateForm(user));
-    console.log(user.email)
-    console.log(agreedToTerms)
+    
     if(!agreedToTerms)
     {
       alert("Accept Terms and Conditions to login!!!");
@@ -48,7 +52,6 @@ const Login = () => {
       const p=new URLSearchParams({email:user.email,password:user.password});
       try {
         const response = await axios.get(`http://localhost:8000/login/?${p}`);
-        console.log(response.data.message);
         if(response.data.message==="valid admin!!!")
         {
           localStorage.setItem("loginemail",user.email)
@@ -56,8 +59,15 @@ const Login = () => {
           
         }
         else{
+          if(response.data.test_taken)
+          {
+            alert("Your Test Over!!!")
+          }
+          else{
           localStorage.setItem("loginemail",user.email)
+          localStorage.setItem("test_taken",response.data.test_taken)
           window.location.href="/signup"
+          }
           
         }
         

@@ -24,7 +24,7 @@ def login(request):
             if(data['admin']):
                return JsonResponse({'message':"valid admin!!!"})
             else:
-               return JsonResponse({'message':"valid client!!!"})
+               return JsonResponse({'message':"valid client!!!",'test_taken':data['test_taken']})
          else:
             return JsonResponse({'error': 'Invalid Username or Password!!!'},status=400)
    else:

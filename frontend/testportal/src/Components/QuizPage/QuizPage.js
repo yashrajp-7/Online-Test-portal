@@ -225,6 +225,7 @@ import './QuizPage.css';
 import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRestrictCopyPaste } from "../Copy_Paste.ts"
+import axios from "axios";
 import { UNSAFE_NavigationContext } from "react-router-dom";
 import { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
@@ -236,93 +237,104 @@ const QuizPage = () => {
   const [isFullscreen, setIsFullscreen] = React.useState(false);
   const navigate = useNavigate();
   const location = useLocation()
-  const [timeLeft, setTimeLeft] = useState(() => {
-    const storedTime = localStorage.getItem('startTime');
-    if (storedTime) {
-      const elapsedSeconds = Math.floor((Date.now() - parseInt(storedTime)) / 1000);
-      console.log(elapsedSeconds)
-      return Math.max(10000 - elapsedSeconds, 0); // Time limit in seconds (300 seconds = 5 minutes)
+  const [timeLeft, setTimeLeft] = useState();
+  useEffect(()=>{
+    if(localStorage.getItem("loginemail")===null || localStorage.getItem("test_taken")==="true")
+    {
+      window.location.href="/"
     }
-    return 10000
-  });
-
-  useEffect(() => {
-    const storedQuestions = localStorage.getItem('randomQuestions');
-    if (storedQuestions) {
-      setRandomQuestions(JSON.parse(storedQuestions));
-      setMarks(new Array(JSON.parse(storedQuestions).length).fill(false));
-    } else {
-      const question = [
-        {
-          question: 'What is the capital of India?',
-          options: ['Delhi', 'Mumbai', 'Kolkata', 'Chennai'],
-          answer: 'Delhi'
-        },
-        {
-          question: 'What is the capital of Australia?',
-          options: ['Sydney', 'Melbourne', 'Canberra', 'Perth'],
-          answer: 'Canberra'
-        },
-        {
-          question: 'What is the capital of USA?',
-          options: ['New York', 'Washington D.C.', 'Los Angeles', 'Chicago'],
-          answer: 'Washington D.C.'
-        },
-        {
-          question: 'What is the capital of Japan?',
-          options: ['Tokyo', 'Kyoto', 'Osaka', 'Hiroshima'],
-          answer: 'Tokyo'
-        },
-        {
-          question: 'What is the capital of Russia?',
-          options: ['Moscow', 'Saint Petersburg', 'Novosibirsk', 'Yekaterinburg'],
-          answer: 'Moscow'
-        }
-      ];
-
-      const shuffledQuestions = question.sort(() => Math.random() - 0.5).slice(0, 5).map(q => {
-        return {
-          ...q,
-          options: q.options.sort(() => Math.random() - 0.5)
-        };
-      });
-
-      setRandomQuestions(shuffledQuestions);
-      setMarks(new Array(shuffledQuestions.length).fill(false));
-      localStorage.setItem('randomQuestions', JSON.stringify(shuffledQuestions));
-    }
-  }, []);
-
-  useEffect(() => {
-    function onFullscreenChange() {
-      setIsFullscreen(Boolean(document.fullscreenElement));
-    }
+  })
+  useEffect(async() => {
+          let question = [];
+          let q=""
+          if(localStorage.getItem('teststream')==="B.Tech")
+          {
+            q=q+"B"
+          }
+          else{
+            q=q+"M"
+          }
+          if(localStorage.getItem('testbranch')==="Computer Science/Information Technology")
+          {
+            q=q+"CSE"
+          }
+          else if(localStorage.getItem('testbranch')==="Electrical and Communication")
+          {
+            q=q+"ET"
+          }
+          else if(localStorage.getItem('testbranch')==="Electrical and Electronics")
+          {
+            q=q+"EE"
+          }
+          else{
+            q=q+"ME"
+          }
+          console.log(q);
+          const p=new URLSearchParams({stream:q});
+          try {
+            const response = await axios.get(`http://localhost:8000/questions/?${p}`);
+            console.log(response.data.data);
+            question=response.data.data
+    
+            
+          } catch (error) {
+            console.error('Error getting question::', error);
+          }
           
-    document.addEventListener('fullscreenchange', onFullscreenChange);
+    
+          const shuffledQuestions = question.sort(() => Math.random() - 0.5).slice(0, 5).map(q => {
+            return {
+              ...q,
+              options: q.options.sort(() => Math.random() - 0.5)
+            };
+          });
+    
+          setRandomQuestions(shuffledQuestions);
+          setMarks(new Array(shuffledQuestions.length).fill(false));
+          
+      }, []);
+      useEffect(
+        () => {
+          const storedTime = localStorage.getItem('startTime');
+          if (storedTime) {
+            const elapsedSeconds = Math.floor((Date.now() - parseInt(storedTime)) / 1000);
+            console.log(elapsedSeconds)
+            setTimeLeft(Math.max(3600 - elapsedSeconds, 0)); // Time limit in seconds (300 seconds = 5 minutes)
+          }
+          else{
+          setTimeLeft(3600)}
+        },[]
+      )
+  // useEffect(() => {
+  //   function onFullscreenChange() {
+  //     setIsFullscreen(Boolean(document.fullscreenElement));
+  //   }
+          
+  //   document.addEventListener('fullscreenchange', onFullscreenChange);
   
-    return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
-  }, []);
+  //   return () => document.removeEventListener('fullscreenchange', onFullscreenChange);
+  // }, []);
 
 
   //Restricts copy paste
-  useRestrictCopyPaste({window, actions:["copy","cut","paste"]});
+  // useRestrictCopyPaste({window, actions:["copy","cut","paste"]});
 
-  //Restricts Tab Switch
+  // //Restricts Tab Switch
 
-    // const handleTabSwitch = () => {
-    //     alert("Tab switching is not allowed!Your Activity is Recorded");
-    // }
-    //   // Tab switch prevent
-    //   useEffect(() => {
-    //     document.addEventListener("visibilitychange", handleTabSwitch);
-    //     return () => {
-    //       document.removeEventListener("visibilitychange", handleTabSwitch);
-    //     };
-    //   }, []);
+  //   const handleTabSwitch = () => {
+  //       alert("Tab switching is not allowed!Your Activity is Recorded");
+  //   }
+  //     // Tab switch prevent
+  //     useEffect(() => {
+  //       document.addEventListener("visibilitychange", handleTabSwitch);
+  //       return () => {
+  //         document.removeEventListener("visibilitychange", handleTabSwitch);
+  //       };
+  //     }, []);
 
-    // window.onblur = function () { 
-    //   alert('Tab switching is prohibited!');
-    // }; 
+  //   window.onblur = function () { 
+  //     alert('Tab switching is prohibited!');
+  //   }; 
     
       //Stroing time in cookie
       useEffect(() => {
@@ -354,7 +366,7 @@ const QuizPage = () => {
         }
       }
       
-      // //This handles right click block
+      //This handles right click block
       // useEffect(() => {
       //   const handleRightClick = (event) => {
       //     event.preventDefault();
@@ -367,7 +379,7 @@ const QuizPage = () => {
       //   };
       // }, []);
 
-      // //This blocks all the keypress events
+      // This blocks all the keypress events
 
       // useEffect(() => {
       //   const handleKeyDown = (event) => {
@@ -414,11 +426,11 @@ const QuizPage = () => {
   return (
     <div className="main" style={{width:"100%"}}>
       <header>
-          <h1 className="ml">ML Skill Test</h1>
+          <h1 className="ml">{localStorage.getItem("teststream")} {localStorage.getItem("testbranch")} Skill Test</h1>
       </header>
         <div className="timer-container">
         <div className="button-group">
-            <button className="submit-button" onClick={getScore}>Submit</button>
+            <button className="submit-button2" onClick={getScore}>Submit</button>
         </div>
         <div className="timer">
           Time Left: {Math.floor(timeLeft / 60)}:{(timeLeft % 60).toString().padStart(2, '0')}

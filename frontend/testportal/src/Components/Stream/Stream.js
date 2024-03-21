@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import './Stream.css';
 import axios from "axios";
 
@@ -9,7 +9,18 @@ const Stream = () => {
   const handleStreamChange = (event) => {
     setStream(event.target.value);
   };
-
+  useEffect(()=>{
+    if(localStorage.getItem("signup")==="done")
+    {
+      window.location.href="/instruction"
+    }
+  })
+  useEffect(()=>{
+    if(localStorage.getItem("loginemail")===null || localStorage.getItem("test_taken")==="true")
+    {
+      window.location.href="/"
+    }
+  })
   const handleBranchChange = (event) => {
     setBranch(event.target.value);
   };
@@ -62,6 +73,7 @@ const Stream = () => {
     })
       .then(response => {
         console.log(response.data.message);
+        localStorage.setItem("signup","done");
         window.location.href="/instruction";
         })
         .catch(error => {console.error( error)

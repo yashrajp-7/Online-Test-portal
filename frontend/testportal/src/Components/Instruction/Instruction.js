@@ -12,7 +12,12 @@ const Instruction = ({ setUserState }) => {
   const navigateTest = () => {
     setShowResult(true)
   };
-
+  useEffect(()=>{
+    if(localStorage.getItem("loginemail")===null || localStorage.getItem("test_taken")==="true")
+    {
+      window.location.href="/"
+    }
+  })
   useRestrictCopyPaste({window, actions:["copy","cut","paste"]});
 
   return (

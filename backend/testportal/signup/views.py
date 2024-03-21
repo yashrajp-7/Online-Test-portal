@@ -1,6 +1,7 @@
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from .models import Student
+from login.models import Login
 from django.http import JsonResponse
 from rest_framework.response import Response
 from .forms import SignupForm
@@ -47,6 +48,10 @@ def submit(request):
         res.save()
         res=Student.objects.all().values()
         print(res)
+        res2=Login.objects.get(email=request.POST.get("email"))
+        res2.test_taken=data['test_taken']
+        res2=Login.objects.all().values()
+        print(res2)
         return JsonResponse({'message':"sucessfully submitted!!!"})
     else:
         return JsonResponse({'error': 'Need POST request.'},status=400)
