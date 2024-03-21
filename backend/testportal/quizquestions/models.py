@@ -14,11 +14,11 @@ choice=(
 class  Questions(models.Model):
     id = models.BigAutoField(primary_key=True)
     question= models.CharField(max_length=500)
-    option1=models.CharField(max_length=100)
-    option2=models.CharField(max_length=100)
-    option3=models.CharField(max_length=100)
-    option4=models.CharField(max_length=100)
-    answer= models.CharField(max_length=100)
+    option1=models.CharField(max_length=500)
+    option2=models.CharField(max_length=500)
+    option3=models.CharField(max_length=500)
+    option4=models.CharField(max_length=500)
+    answer= models.CharField(max_length=500)
     department= models.CharField(max_length=100,choices=choice)
     def __str__(self):
         return str(self.id)

@@ -12,7 +12,7 @@ from quizquestions.models import Questions
 # Create your views here.
 @api_view(['GET', 'POST'])
 @csrf_exempt 
-def admin(request):
+def login(request):
    if(request.method == 'GET'):
       res=Login.objects.filter(email=request.GET.get("email")).count()
       if(res==0):
@@ -21,28 +21,16 @@ def admin(request):
          res=Login.objects.filter(email=request.GET.get("email")).values()
          data=res[0]
          if(data['password']==request.GET.get("password")):
-            return JsonResponse({'message':"valid admin!!!"})
+            if(data['admin']):
+               return JsonResponse({'message':"valid admin!!!"})
+            else:
+               return JsonResponse({'message':"valid client!!!"})
          else:
             return JsonResponse({'error': 'Invalid Username or Password!!!'},status=400)
    else:
       return JsonResponse({'error': 'Need GET request.'},status=400)
 
-@api_view(['GET', 'POST'])
-@csrf_exempt 
-def client(request):
-   if(request.method == 'GET'):
-      res=Login.objects.filter(email=request.GET.get("email")).count()
-      if(res==0):
-         return JsonResponse({'error': 'User not found.'},status=400)
-      else:
-         res=Login.objects.filter(email=request.GET.get("email")).values()
-         data=res[0]
-         if(data['password']==request.GET.get("password")):
-            return JsonResponse({'message':"valid client!!!"})
-         else:
-            return JsonResponse({'error': 'Invalid Username or Password!!!'},status=400)
-   else:
-      return JsonResponse({'error': 'Need GET request.'},status=400)
+
    
 
 
@@ -61,7 +49,6 @@ def send(email,username,password):
 @csrf_exempt 
 def home(request):
    if(request.method == 'POST'):
-      print(request.FILES['email'])
       df = pd.read_excel(request.FILES['email'])
       print(df)
       for i in range(len(df)):
@@ -71,12 +58,10 @@ def home(request):
             query=Login(email=df.iloc[i, 0],password=password)
             query.save()
             send(df.iloc[i, 0],df.iloc[i, 1],password)
+            print("email send!!")
          else:
             print("email exists!!")
-      print(Login.objects.all().values())
-      print(request.FILES['question'])
       df = pd.read_excel(request.FILES['question'])
-      print(df)
       depart=dict()
       depart["B.Tech Mechanical Engineering"]="BME"
       depart["B.Tech Computer science/ IT"]="BCSE"
@@ -87,9 +72,12 @@ def home(request):
       depart["M.Tech Electronics & Telecomm"]="MET"
       depart["M.Tech Electrical/Electronics"]="MEE"
       for i in range(len(df)):
-         query=Questions(question=df.iloc[i, 0],option1=df.iloc[i, 1],option2=df.iloc[i, 2],option3=df.iloc[i, 3],option4=df.iloc[i, 4],answer=df.iloc[i, 5],department=depart[df.iloc[i, 6]])
-         query.save()
-      print(Questions.objects.all().values())
+         res=Questions.objects.filter(question=df.iloc[i, 0],option1=df.iloc[i, 1],option2=df.iloc[i, 2],option3=df.iloc[i, 3],option4=df.iloc[i, 4],answer=df.iloc[i, 5],department=depart[df.iloc[i, 6]]).count()
+         if(res==0):
+            query=Questions(question=df.iloc[i, 0],option1=df.iloc[i, 1],option2=df.iloc[i, 2],option3=df.iloc[i, 3],option4=df.iloc[i, 4],answer=df.iloc[i, 5],department=depart[df.iloc[i, 6]])
+            query.save()
+         else:
+            print("question already present!!")
       return JsonResponse({'message':"send email and questions saved successfully!!!"})
    else:
       return JsonResponse({'error': 'Need POST request.'},status=400)

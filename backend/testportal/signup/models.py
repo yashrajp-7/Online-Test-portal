@@ -12,6 +12,7 @@ class Student(models.Model):
     degree = models.CharField(max_length=100)
     stream = models.CharField(max_length=100)
     score = models.IntegerField(default=0)
+    resume = models.FileField(upload_to='resume/',blank=True,null=True)
     test_taken = models.BooleanField(default=False)
     def __str__(self):
         return self.email
