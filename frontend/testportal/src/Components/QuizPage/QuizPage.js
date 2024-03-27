@@ -2,7 +2,7 @@
 import React from 'react';
 import './QuizPage.css';
 import { useState,useEffect } from 'react';
-
+import logo from '../../Assets/whirpool7915.jpg';
 import { useRestrictCopyPaste } from "../Copy_Paste.ts"
 import axios from "axios";
 
@@ -25,31 +25,7 @@ const QuizPage = () => {
   })
   useEffect(async() => {
           let question = [];
-          let q=""
-          if(localStorage.getItem('teststream')==="B.Tech")
-          {
-            q=q+"B"
-          }
-          else{
-            q=q+"M"
-          }
-          if(localStorage.getItem('testbranch')==="Computer Science/Information Technology")
-          {
-            q=q+"CSE"
-          }
-          else if(localStorage.getItem('testbranch')==="Electrical and Communication")
-          {
-            q=q+"ET"
-          }
-          else if(localStorage.getItem('testbranch')==="Electrical and Electronics")
-          {
-            q=q+"EE"
-          }
-          else{
-            q=q+"ME"
-          }
-          console.log(q);
-          const p=new URLSearchParams({stream:q});
+          const p=new URLSearchParams({stream:localStorage.getItem("teststream"),branch:localStorage.getItem("testbranch")});
           try {
             const response = await axios.get(`http://localhost:8000/questions/?${p}`);
             console.log(response.data.data);
@@ -226,7 +202,8 @@ const QuizPage = () => {
       return (
         <div className="main" style={{width:"100%"}}>
           <header>
-              <h1 className="ml">{localStorage.getItem("teststream")} {localStorage.getItem("testbranch")} Skill Test</h1>
+          <img  style={{height:"120px",width:"200px",padding:"0px"}} src={logo} />
+              <h1 className="ml" style={{marginTop:"-100px"}}>{localStorage.getItem("teststream")} {localStorage.getItem("testbranch")} Skill Test</h1>
           </header>
             <div className="timer-container">
             <div className="button-group">

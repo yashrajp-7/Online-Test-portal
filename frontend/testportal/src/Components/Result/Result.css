@@ -1,5 +1,5 @@
 .report{
-  margin-top: 4%;
+  margin-top: 1%;
     border: 1px solid rgb(10, 8, 8);
     height: auto;
     overflow: auto;
@@ -23,4 +23,9 @@ h1{
     text-align: left;
     background-color: #ffc107;
     color: white;
+  }
+  .downloadresult
+  {
+    margin-left: 87%;
+    background-color: green;
   }

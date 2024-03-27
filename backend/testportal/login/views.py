@@ -63,19 +63,10 @@ def home(request):
       #    else:
       #       print("email exists!!")
       df = pd.read_excel(request.FILES['question'])
-      depart=dict()
-      depart["B.Tech Mechanical Engineering"]="BME"
-      depart["B.Tech Computer science/ IT"]="BCSE"
-      depart["B.Tech Electronics & Telecomm"]="BET"
-      depart["B.Tech Electrical/Electronics"]="BEE"
-      depart["M.Tech Mechanical Engineering"]="MME"
-      depart["M.Tech Computer science/ IT"]="MCSE"
-      depart["M.Tech Electronics & Telecomm"]="MET"
-      depart["M.Tech Electrical/Electronics"]="MEE"
       for i in range(len(df)):
-         res=Questions.objects.filter(question=df.iloc[i, 0],option1=df.iloc[i, 1],option2=df.iloc[i, 2],option3=df.iloc[i, 3],option4=df.iloc[i, 4],answer=df.iloc[i, 5],department=depart[df.iloc[i, 6]]).count()
+         res=Questions.objects.filter(question=df.iloc[i, 0],option1=df.iloc[i, 1],option2=df.iloc[i, 2],option3=df.iloc[i, 3],option4=df.iloc[i, 4],answer=df.iloc[i, 5],stream=df.iloc[i, 6],branch=df.iloc[i,7]).count()
          if(res==0):
-            query=Questions(question=df.iloc[i, 0],option1=df.iloc[i, 1],option2=df.iloc[i, 2],option3=df.iloc[i, 3],option4=df.iloc[i, 4],answer=df.iloc[i, 5],department=depart[df.iloc[i, 6]])
+            query=Questions(question=df.iloc[i, 0],option1=df.iloc[i, 1],option2=df.iloc[i, 2],option3=df.iloc[i, 3],option4=df.iloc[i, 4],answer=df.iloc[i, 5],stream=df.iloc[i, 6],branch=df.iloc[i,7])
             query.save()
          else:
             print("question already present!!")

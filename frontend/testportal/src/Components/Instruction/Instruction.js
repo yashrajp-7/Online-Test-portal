@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import './Instruction.css'
 import { useRestrictCopyPaste } from "../Copy_Paste.ts"
-
+import logo from '../../Assets/whirpool7915.jpg';
 
 
 const Instruction = ({ setUserState }) => {
@@ -22,6 +22,7 @@ const Instruction = ({ setUserState }) => {
 
   return (
     <div className='instruction' style={{width:"100%"}}>
+      <img  style={{height:"150px",width:"280px"}} src={logo} />
       <div className='list'>
         <ul>
         <h3>Instructions to follow: </h3>

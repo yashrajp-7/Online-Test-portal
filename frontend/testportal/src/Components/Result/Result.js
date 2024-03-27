@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react';
 import Navbar from "../Admin/Navbar";
 import { useNavigate } from 'react-router-dom';
 import './Result.css';
+import * as XLSX from 'xlsx';
 import axios from "axios";
 export const Result = () => {
   const [tableData, setTableData] = useState([]);
@@ -34,10 +35,17 @@ export const Result = () => {
       window.open(url,'_blank');
       
     };
+    const handledownload=()=>{
+      const worksheet=XLSX.utils.json_to_sheet(tableData);
+      const workbook=XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(workbook,worksheet,'sheet1');
+      XLSX.writeFile(workbook,"result.xlsx");
+    };
   return (
     <div className='main'>
         <Navbar /> 
         <h1>Result of Students</h1>
+        <button className={"downloadresult"} onClick={handledownload}>Export to xlsx</button>
         <table className='report' border={1}>
         <thead>
           <tr>

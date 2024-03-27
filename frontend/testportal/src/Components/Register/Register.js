@@ -1,6 +1,6 @@
 
 import React, { useState,useEffect } from "react";
-
+import logo from '../../Assets/whirpool7915.jpg';
 import "./Register.css";
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
@@ -32,6 +32,7 @@ const Register = () => {
       setBranchOptions([
         "Electronics & Telecommunication Engineering", 
         "Mechanical Engineering",
+        "Computer Science Engineering",
         "Manufacturing Engineering and Industrial Management",
         "Mechanical and Aerospace Engineering",
         "Computer engineering",
@@ -40,7 +41,6 @@ const Register = () => {
         "Thermal Engineering",
         "Applied Mechanics(Fluid Mechanics)",
         "Artificial Intilligence & Machinie Learning",
-        "Computer Science Engineering",
         "Mechanis & Design",
         "Power Electronics & Power Systems",
         
@@ -59,13 +59,13 @@ const Register = () => {
       ]);
     }else if (selectedStream === "B.Tech") {
       setBranchOptions([
-        "Chemical",
+        "Mechanical",
         "Computer Science",
         "Electronics & Telecommunication",
         "Industrial",
         "Information Technology",
         "Instrumentation",
-        "Mechanical",
+        "Chemical",
         "Production",
       ]);
     }else if (selectedStream === "MS") {
@@ -220,6 +220,7 @@ const Register = () => {
   return (
     <>
     <div className={"outer"}>
+    <img  style={{height:"150px",width:"280px"}} src={logo} />
       <div className={"register"}>
         <form>
           <h1>Personal Details</h1>

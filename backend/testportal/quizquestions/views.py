@@ -10,7 +10,7 @@ from rest_framework.response import Response
 @csrf_exempt 
 def ques(request):
    if(request.method == 'GET'):
-      res=list(Questions.objects.filter(department=request.GET.get("stream")).values())
+      res=list(Questions.objects.filter(stream=request.GET.get("stream"),branch=request.GET.get("branch")).values())
       result=list()
       for i in res:
          d=dict()

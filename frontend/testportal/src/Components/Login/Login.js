@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import logo from '../../Assets/whirpool7915.jpg';
 import "./Login.css";
 import axios from "axios";
 import { useNavigate, NavLink } from "react-router-dom";
@@ -69,6 +69,7 @@ const Login = () => {
   };
   return (
     <div className={"big"} > 
+    <img style={{height:"150px",width:"280px",float:"right",marginTop:"160px",marginRight: "140px"}} src={logo} />
       <div className={"login"} >
         
         <form>
