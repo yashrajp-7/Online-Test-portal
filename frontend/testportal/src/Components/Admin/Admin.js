@@ -79,7 +79,7 @@ const Admin = () => {
   useEffect(()=>{
     if(localStorage.getItem("loginemail")===null)
     {
-      window.location.href="/"
+      window.location.href="/adminlogin"
     }
   })
   const handleQuestionsUpload = (e) => {
@@ -150,13 +150,6 @@ return (
     <div className={"admin"}>
   <h2>Admin Options</h2>
   <div className="file-upload">
-    <label><b>Upload User Data</b></label>
-    <div className="file-input">
-      <input type="file" onChange={handleUserDataUpload} accept=".xlsx, .xls, .csv" />
-      <input type="text" disabled placeholder={filenameemail===""?"Choose File":filenameemail} />
-    </div>
-  </div>
-  <div className="file-upload">
     <label><b>Upload Questions</b></label>
     <div className="file-input">
       <input type="file" onChange={handleQuestionsUpload} accept=".xlsx, .xls, .csv" />
@@ -165,9 +158,6 @@ return (
   </div>
 
   <button className={"button_common"} onClick={handleSave}>Save</button>
-  <br></br>
-  <label className="labeldownload"><b>Download Test Results  </b></label> 
-  <button className={"button_result"} onClick={handleDownload}>Download </button> 
 </div>
 
     </div>

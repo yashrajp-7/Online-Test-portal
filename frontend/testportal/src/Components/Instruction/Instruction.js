@@ -13,7 +13,7 @@ const Instruction = ({ setUserState }) => {
     setShowResult(true)
   };
   useEffect(()=>{
-    if(localStorage.getItem("loginemail")===null || localStorage.getItem("test_taken")==="true")
+    if(localStorage.getItem("tempid")===null || localStorage.getItem("test_taken")==="true")
     {
       window.location.href="/"
     }
@@ -25,15 +25,17 @@ const Instruction = ({ setUserState }) => {
       <div className='list'>
         <ul>
         <h3>Instructions to follow: </h3>
+        <li>Read the questions carefully and answer from the multiple choice given</li>
         <li>Tab switching is prohibited</li>
         <li>Copy/Paste is prohibited</li>
         <li>No cell phones or other secondary devices in the room or test area</li>
-        <li>No one else can be in the room with you</li>
-        <li>No dual screens/monitors</li>
+        <li>Answering every question is mandatory</li>
+        <li>Kindly ensure you submit the test once completed.</li>
         <li>The examination will comprise of Objective type <strong>Multiple Choice Questions (MCQs)</strong></li>
-        <li>The time duration of the test is <strong>60 minutes</strong></li>
-        <li>All questions are compulsory and each carries 1 mark</li>
+        <li>Test time /Duration is <strong>30mins</strong> - post 30mins the link will expire</li>
+        <li>No Negative marking</li>
         <li><strong>The clock timer will start once you click on "Start test!"</strong></li>
+        <li>All the best </li>
         </ul>
         <div>
         <button className="buttonins" onClick={navigateTest}>Start test!</button>

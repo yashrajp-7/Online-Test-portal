@@ -1,0 +1,26 @@
+.report{
+  margin-top: 4%;
+    border: 1px solid rgb(10, 8, 8);
+    height: auto;
+    overflow: auto;
+    border-radius:4px ;
+    max-height: 400px;
+    width: 90vw;
+    position: relative;
+    left: 4vw;
+    text-align: center;
+    align-items: center;
+  }
+h1{
+  text-align: center;
+}
+.report th {
+    border: 1px solid #1d1212;
+    text-align: left;
+    padding: 8px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #ffc107;
+    color: white;
+  }

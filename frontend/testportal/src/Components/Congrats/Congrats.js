@@ -13,7 +13,7 @@ export default function Congrats() {
         window.location.href = '/login';
     }
     useEffect(()=>{
-        if(localStorage.getItem("loginemail")===null )
+        if(localStorage.getItem("tempid")===null )
         {
           window.location.href="/"
         }
@@ -46,7 +46,6 @@ export default function Congrats() {
             <Confetti width={width} height={height}/>
             <img src={logo} alt="congrats" />
             <h1>Congratulations! Your Test Has Been Submitted!!!!!</h1>
-            <h2>Your scored {marks}/{outoff}</h2>
             <button onClick={handleClick}>Log Out</button>
         </div>
         </div>

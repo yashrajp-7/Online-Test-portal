@@ -1,230 +1,4 @@
-// import React, { useState } from "react";
-// import basestyle from "../Base.module.css";
-// import registerstyle from "./Register.module.css";
-// import axios from "axios";
-// import { useNavigate, NavLink } from "react-router-dom";
 
-// const Register = () => {
-//   const navigate = useNavigate();
-
-//   const [formErrors, setFormErrors] = useState({});
-//   const [user, setUserDetails] = useState({
-//     name: "",
-//     branch: "",
-//     gender: "",
-//     phone: "",
-//     college: "",
-//     email: "",
-//     degree: "",
-//     specialization: "",
-//     sfid: "",
-//     cv: null
-//   });
-
-//   const changeHandler = (e) => {
-//     const { name, value } = e.target;
-//     setUserDetails({
-//       ...user,
-//       [name]: value,
-//     });
-//   };
-
-//   const validateForm = () => {
-//     let errors = {};
-
-//     if (!user.name) {
-//       errors.name = "Name is required";
-//     }
-
-//     if (!user.branch) {
-//       errors.branch = "Branch is required";
-//     }
-
-//     if (!user.gender) {
-//       errors.gender = "Gender is required";
-//     }
-
-//     if (!user.phone) {
-//       errors.phone = "Phone Number is required";
-//     }
-
-//     if (!user.college) {
-//       errors.college = "College Name is required";
-//     }
-
-//     if (!user.email) {
-//       errors.email = "Email is required";
-//     } else if (!/\S+@\S+\.\S+/.test(user.email)) {
-//       errors.email = "Invalid email address";
-//     }
-
-//     if (!user.degree) {
-//       errors.degree = "Highest Degree is required";
-//     }
-
-//     if (!user.specialization) {
-//       errors.specialization = "Specialization is required";
-//     }
-
-//     if (!user.sfid) {
-//       errors.sfid = "SF ID is required";
-//     }
-
-//     setFormErrors(errors);
-
-//     return Object.keys(errors).length === 0;
-//   };
-
-//   const signupHandler = async (e) => {
-//     e.preventDefault();
-//     if(!validateForm())
-//     {
-//       if(user.email===localStorage.getItem('loginemail'))
-//       {
-//         localStorage.setItem("name",user.name)
-//         localStorage.setItem("sfid",user.sfid)
-//         localStorage.setItem("specialization",user.specialization)
-//         localStorage.setItem("degree",user.degree)
-//         localStorage.setItem("college",user.college)
-//         localStorage.setItem("phone",user.phone)
-//         localStorage.setItem("gender",user.gender)
-//         localStorage.setItem("branch",user.branch)
-//         localStorage.setItem("email",user.email)
-//         window.location.href="/stream"
-//       }
-//       else{
-//         console.log(user.email)
-//         console.log(localStorage.getItem("loginemail"))
-//         console.log(localStorage.getItem("email"))
-//         alert("Enter Same Email of Login Email!!")
-//       }
-//     }
-//      //ARUN USE IT
-//     // if (validateForm()) {
-//     //   try {
-//     //     const response = await axios.post("http://localhost:9002/signup", user);
-//     //     alert(response.data.message);
-//     //     navigate("/login");
-//     //   } catch (error) {
-//     //     console.error("Registration failed:", error);
-//     //     alert("Registration failed. Please try again later.");
-//     //   }
-//     // }
-    
-//   };
-
-//   return (
-//     <>
-    
-//       <div className={registerstyle.register}>
-//         <form>
-//           <h1>Create your account</h1>
-//           <div className={registerstyle.gridContainer}>
-//             <div className={registerstyle.leftSide}>
-//               <input
-//                 type="text"
-//                 name="name"
-//                 id="name"
-//                 placeholder="Name"
-//                 onChange={changeHandler}
-//                 value={localStorage.getItem("name")}
-//               />
-//               <p className={basestyle.error}>{formErrors.name}</p>
-//               <input
-//                 type="text"
-//                 name="branch"
-//                 id="branch"
-//                 placeholder="Branch"
-//                 onChange={changeHandler}
-//                 value={localStorage.getItem("branch")}
-//               />
-//               <p className={basestyle.error}>{formErrors.branch}</p>
-//               <input
-//                 type="text"
-//                 name="gender"
-//                 id="gender"
-//                 placeholder="Gender"
-//                 onChange={changeHandler}
-//                 value={localStorage.getItem("gender")}
-//               />
-//               <p className={basestyle.error}>{formErrors.gender}</p>
-//               <input
-//                 type="text"
-//                 name="phone"
-//                 id="phone"
-//                 placeholder="Phone Number"
-//                 onChange={changeHandler}
-//                 value={localStorage.getItem("phone")}
-//               />
-//               <p className={basestyle.error}>{formErrors.phone}</p>
-//               <input
-//                 type="file"
-//                 name="cv"
-//                 id="cv"
-//                 onChange={changeHandler}
-//                 accept=".pdf,.doc,.docx"
-//               />
-//             </div>
-//             <div className={registerstyle.rightSide}>
-//               <input
-//                 type="text"
-//                 name="college"
-//                 id="college"
-//                 placeholder="College Name"
-//                 onChange={changeHandler}
-//                 value={localStorage.getItem("college")}
-//               />
-//               <p className={basestyle.error}>{formErrors.college}</p>
-//               <input
-//                 type="email"
-//                 name="email"
-//                 id="email"
-//                 placeholder="Email"
-//                 onChange={changeHandler}
-//                 value={localStorage.getItem("email")}
-//               />
-//               <p className={basestyle.error}>{formErrors.email}</p>
-//               <input
-//                 type="text"
-//                 name="degree"
-//                 id="degree"
-//                 placeholder="Highest Degree"
-//                 onChange={changeHandler}
-//                 value={localStorage.getItem("degree")}
-//               />
-//               <p className={basestyle.error}>{formErrors.degree}</p>
-//               <input
-//                 type="text"
-//                 name="specialization"
-//                 id="specialization"
-//                 placeholder="Specialization"
-//                 onChange={changeHandler}
-//                 value={localStorage.getItem("specialization")}
-//               />
-//               <p className={basestyle.error}>{formErrors.specialization}</p>
-//               <input
-//                 type="text"
-//                 name="sfid"
-//                 id="sfid"
-//                 placeholder="SF ID"
-//                 onChange={changeHandler}
-//                 value={localStorage.getItem("sfid")}
-//               />
-//               <p className={basestyle.error}>{formErrors.sfid}</p>
-//             </div>
-//           </div>
-          
-//         <button className="button1" onClick={signupHandler}>
-//           Save & Next   <span>&rarr;</span>
-//         </button>
-     
-//         </form>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default Register;
 import React, { useState,useEffect } from "react";
 
 import "./Register.css";
@@ -236,16 +10,80 @@ const Register = () => {
 
   const [formErrors, setFormErrors] = useState({});
   const [user, setUserDetails] = useState({
-    name: localStorage.getItem("name"),
-    branch: localStorage.getItem("branch"),
-    gender: localStorage.getItem("gender"),
-    phone: localStorage.getItem("phone"),
-    college: localStorage.getItem("college"),
-    email: localStorage.getItem("email"),
-    degree: localStorage.getItem("degree"),
-    sfid: localStorage.getItem("sfid"),
+    name: "",
+    rollno: "",
+    gender: "",
+    phone: "",
+    college: "",
+    email:"",
+    degree: "",
+    sfid:"",
    
   });
+  const [teststream, setStream] = useState("");
+  const [testbranch, setBranch] = useState("");
+  const [branchOptions, setBranchOptions] = useState([]);
+  const [resume, setResume] = useState(null);
+  const handleStreamChange = (event) => {
+    const selectedStream = event.target.value;
+    setStream(selectedStream);
+    // Update branch options based on the selected stream
+    if (selectedStream === "M.Tech") {
+      setBranchOptions([
+        "Electronics & Telecommunication Engineering", 
+        "Mechanical Engineering",
+        "Manufacturing Engineering and Industrial Management",
+        "Mechanical and Aerospace Engineering",
+        "Computer engineering",
+        "Manufacturing Solutions",
+        "Design Engineering",
+        "Thermal Engineering",
+        "Applied Mechanics(Fluid Mechanics)",
+        "Artificial Intilligence & Machinie Learning",
+        "Computer Science Engineering",
+        "Mechanis & Design",
+        "Power Electronics & Power Systems",
+        
+      ]);
+      
+    } 
+    else if (selectedStream === "B.Des") {
+      setBranchOptions([
+        "Product Design", 
+        "UI/UX Design"
+      ]);
+    }else if (selectedStream === "M.Des") {
+      setBranchOptions([
+        "Product Design", 
+        "UI/UX Design"
+      ]);
+    }else if (selectedStream === "B.Tech") {
+      setBranchOptions([
+        "Chemical",
+        "Computer Science",
+        "Electronics & Telecommunication",
+        "Industrial",
+        "Information Technology",
+        "Instrumentation",
+        "Mechanical",
+        "Production",
+      ]);
+    }else if (selectedStream === "MS") {
+          setBranchOptions([
+            "Automobile",
+            "Interdisciplinary"
+          ]);
+    } else {
+      // Reset branch options if no stream is selected
+      setBranchOptions([]);
+    }
+    // Reset branch selection when stream changes
+    setBranch("");
+  };
+
+  const handleBranchChange = (event) => {
+    setBranch(event.target.value);
+  };
   useEffect(()=>{
     if(localStorage.getItem("signup")==="done")
     {
@@ -260,31 +98,32 @@ const Register = () => {
     });
   };
   useEffect(()=>{
-    if(localStorage.getItem("loginemail")===null || localStorage.getItem("test_taken")==="true")
+    if(localStorage.getItem("tempid")===null || localStorage.getItem("test_taken")==="true")
     {
       window.location.href="/"
     }
   })
-  useEffect(()=>
-  {
-    const handleBack=()=>
-    {
-      window.history.replaceState(null,null,window.location.pathname);
-    };
-    handleBack();
-    return ()=>{window.history.pushState({},'',window.location.pathname)};
-  },[]);
+  // useEffect(()=>
+  // {
+  //   const handleBack=()=>
+  //   {
+  //     window.history.replaceState(null,null,window.location.pathname);
+  //   };
+  //   handleBack();
+  //   return ()=>{window.history.pushState({},'',window.location.pathname)};
+  // },[]);
 
 
   const validateForm = () => {
     let errors = {};
-
+    let sfid=user.sfid
+   
     if (!user.name) {
       errors.name = "Name is required";
     }
 
-    if (!user.branch) {
-      errors.branch = "Branch is required";
+    if (!user.rollno) {
+      errors.rollno = "Rollno is required";
     }
 
     if (!user.gender) {
@@ -309,37 +148,73 @@ const Register = () => {
       errors.degree = "Highest Degree is required";
     }
 
-    if (!user.sfid) {
-      errors.sfid = "SF ID is required";
+    if ((!user.sfid) || (sfid.length!==5)||(!(/^\d+$/.test(sfid)))) {
+      errors.sfid = "SF ID is required and it should numeric with length 5";
+      
     }
-
+    if (!teststream) {
+      errors.stream = "Stream is required";
+    }
+    if (!testbranch) {
+      errors.branch = "Branch is required";
+    }
+    if(resume===null)
+    {
+      errors.resume = "Resume is required";
+    }
     setFormErrors(errors);
 
     return Object.keys(errors).length === 0;
   };
-
+  const changeHandler2 = (e) => {
+    const file = e.target.files[0];
+    setResume(file);
+    
+    console.log('Uploading resume...', file);
+  };
   const signupHandler = async (e) => {
     e.preventDefault();
     if(validateForm())
     {
-      if(user.email===localStorage.getItem('loginemail'))
-      {
-        localStorage.setItem("name",user.name)
-        localStorage.setItem("sfid",user.sfid)
-        localStorage.setItem("degree",user.degree)
-        localStorage.setItem("college",user.college)
-        localStorage.setItem("phone",user.phone)
-        localStorage.setItem("gender",user.gender)
-        localStorage.setItem("branch",user.branch)
-        localStorage.setItem("email",user.email)
-        window.location.href="/stream"
-      }
-      else{
-        console.log(user.email)
-        console.log(localStorage.getItem("loginemail"))
-        console.log(localStorage.getItem("email"))
-        alert("Enter Same Email of Login Email!!")
-      }
+      localStorage.setItem('testbranch',testbranch);
+      localStorage.setItem('teststream',teststream);
+      const formData = new FormData();
+    
+    
+    formData.append('resume', resume);
+    formData.append('name',user.name);
+    formData.append('college_name',user.college );
+    formData.append('rollno', user.rollno);
+    formData.append('email', user.email);
+    formData.append('gender', user.gender);
+    formData.append('highestdegree', user.degree);
+    formData.append('phone_no',user.phone);
+    formData.append('SFID', user.sfid);
+    formData.append('branch', testbranch);
+    formData.append('stream', teststream);
+    
+    
+    axios.post('http://127.0.0.1:8000/signup/', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+      
+    })
+      .then(response => {
+        console.log(response.data.message);
+        if(response.data.message==="Your Test is done!!!")
+        {
+          alert("Your Test is Done");
+        }
+        else{
+        localStorage.setItem("email",user.email);
+        localStorage.getItem('teststream',teststream);
+        localStorage.getItem('testbranch',testbranch);
+        window.location.href="/instruction";
+        }
+        })
+        .catch(error => {console.error( error)
+        alert("Email ID or Rollno already registered!!!")});
     }
   };
   return (
@@ -360,16 +235,16 @@ const Register = () => {
                 value={user.name==="null"? "":user.name}
               />
               <p className={"error"}>{formErrors.name}</p>
-              <label>Branch:</label>
+              <label>Rollno:</label>
               <input
                 type="text"
-                name="branch"
-                id="branch"
-                placeholder="Branch"
+                name="rollno"
+                id="rollno"
+                placeholder="Rollno"
                 onChange={changeHandler}
-                value={user.branch==="null"? "":user.branch}
+                value={user.rollno==="null"? "":user.rollno}
               />
-              <p className={"error"}>{formErrors.branch}</p>
+              <p className={"error"}>{formErrors.rollno}</p>
               <label>Gender:</label>
               <input
                 type="text"
@@ -390,6 +265,21 @@ const Register = () => {
                 value={user.phone==="null"? "":user.phone}
               />
               <p className={"error"}>{formErrors.phone}</p>
+              <div className="dropdowns">
+        <div className="dropdown">
+          <label>Select your Stream</label>
+          <select value={teststream} onChange={handleStreamChange}>
+            <option value="">Select Stream</option>
+            <option value="B.Des">B.Des</option>
+            <option value="M.Des">M.Des</option>
+            <option value="B.Tech">B.Tech</option>
+            <option value="MS">M.S</option>
+            <option value="M.Tech">M.Tech</option>
+          </select>
+        </div>
+        </div>
+        <p className={"error"}>{formErrors.stream}</p>
+        
             </div>
             <div className={"rightSide"}>
             <label>College Name:</label>
@@ -433,10 +323,37 @@ const Register = () => {
                 value={user.sfid==="null"? "":user.sfid}
               />
               <p className={"error"}>{formErrors.sfid}</p>
+              <div className="dropdowns">
+              <div className="dropdown">
+          <label>Select your Branch</label>
+          
+          <select value={testbranch} onChange={handleBranchChange}>
+          <option value="">Select Branch</option>
+            {branchOptions.map((option) => (
+              <option key={option} value={option}>{option}</option>
+            ))}
+          </select>
+        </div>
+        
+      </div>
+      <p className={"error"}>{formErrors.branch}</p>
             </div>
           </div>
+          <div className="fileuppload">
+        <label>CV/Resume:</label>
+              <input
+                type="file"
+                name="cv"
+                id="cv"
+                onChange={changeHandler2}
+                accept=".pdf,.doc,.docx"
+              />
+        </div>
+        <p className={"error"}>{formErrors.resume}</p>
+          
+      
           <button className={"button1"} onClick={signupHandler}>
-            Save & Next
+            Confirm
           </button>
         </form>
       </div>
