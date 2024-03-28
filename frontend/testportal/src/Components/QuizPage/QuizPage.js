@@ -16,7 +16,7 @@ const QuizPage = () => {
   const [timeLeft, setTimeLeft] = useState();
   const [currentPartIndex, setCurrentPartIndex] = useState(0);
   const [parts, setParts] = useState([]);
-  const NoofQuestionsPerPage=2;
+  const NoofQuestionsPerPage=5;
   useEffect(()=>{
     if(localStorage.getItem("tempid")===null || localStorage.getItem("test_taken")==="true")
     {
@@ -37,7 +37,7 @@ const QuizPage = () => {
           }
           
     
-          const shuffledQuestions = question.sort(() => Math.random() - 0.5).slice(0, 5).map(q => {
+          const shuffledQuestions = question.sort(() => Math.random() - 0.5).slice(0, 10).map(q => {
             return {
               ...q,
               options: q.options.sort(() => Math.random() - 0.5)

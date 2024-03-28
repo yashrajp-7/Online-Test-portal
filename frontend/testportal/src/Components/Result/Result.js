@@ -5,9 +5,31 @@ import { useNavigate } from 'react-router-dom';
 import './Result.css';
 import * as XLSX from 'xlsx';
 import axios from "axios";
+import { DataTable } from 'primereact/datatable';
+import { Column } from 'primereact/column';
+import { Button } from 'primereact/button';
+import { InputText } from 'primereact/inputtext';
+import { FilterMatchMode} from 'primereact/api';
+import "./Style.css"
+import "primereact/resources/primereact.min.css"
 export const Result = () => {
   const [tableData, setTableData] = useState([]);
   const [data,setdata]=useState({});
+  const [filters, setFilters] = useState({
+    global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+    Name: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+    Rollno: { value: null, matchMode: FilterMatchMode.STARTS_WITH },
+    College_Name: {value:null , matchMode: FilterMatchMode.STARTS_WITH},
+    EmailID: {value:null , matchMode: FilterMatchMode.STARTS_WITH},
+    Gender: {value:null , matchMode: FilterMatchMode.STARTS_WITH},
+    Highest_Degree_and_Specialization: {value:null , matchMode: FilterMatchMode.CONTAINS},
+    Phone_Number: {value:null , matchMode: FilterMatchMode.STARTS_WITH},
+    SFID: {value:null , matchMode: FilterMatchMode.STARTS_WITH},
+    Stream: {value:null , matchMode: FilterMatchMode.STARTS_WITH},
+    Branch: {value:null , matchMode: FilterMatchMode.STARTS_WITH},
+    Score: {value:null , matchMode: FilterMatchMode.GREATER_THAN_OR_EQUAL_TO},
+});
+const [globalFilterValue, setGlobalFilterValue] = useState('');
   useEffect(()=>{
     if(localStorage.getItem("loginemail")===null)
     {
@@ -41,55 +63,56 @@ export const Result = () => {
       XLSX.utils.book_append_sheet(workbook,worksheet,'sheet1');
       XLSX.writeFile(workbook,"result.xlsx");
     };
+
+    const renderButton = (rowData) => {
+      return (
+        <Button onClick={() => handleurl(rowData.Resume_Link)}>Resume Link</Button>
+      );
+    };
+    const onGlobalFilterChange = (e) => {
+      const value = e.target.value;
+      let _filters = { ...filters };
+
+      _filters['global'].value = value;
+
+      setFilters(_filters);
+      setGlobalFilterValue(value);
+  };
+
+    const renderHeader = () => {
+      return (
+          <div className="flex justify-content-end">
+              <span className="p-input-icon-left">
+                  <i className="pi pi-search" />
+                  <InputText value={globalFilterValue} onChange={onGlobalFilterChange} placeholder="Keyword Search" />
+              </span>
+          </div>
+      );
+  };
+
+  const headers = renderHeader();
+    
   return (
-    <div className='main'>
+    <div className='main' style={{height:'100%',backgroundColor:'#FAECDD'}}>
         <Navbar /> 
         <h1>Result of Students</h1>
         <button className={"downloadresult"} onClick={handledownload}>Export to xlsx</button>
-        <table className='report' border={1}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>College</th>
-            <th>Roll No</th>
-            <th>Email</th>
-            <th>Gender</th>
-            <th>Highest Degree</th>
-            <th>Phone No.</th>
-            <th>SF ID</th>
-            <th>Degree</th>
-            <th>Stream</th>
-            <th>Score</th>
-            <th>CV/Resume</th>
-            <th>Test Taken</th>
-            {/* Add more table headers as needed */}
-          </tr>
-        </thead>
-        <tbody>
-        
-          {tableData.map((data, index) => (
-            <tr key={index}>
-              <td>{data.Name}</td>
-              <td>{data.College_Name}</td>
-              <td>{data.Rollno}</td>
-              <td>{data.EmailID}</td>
-              <td>{data.Gender}</td>
-              <td>{data.Highest_Degree_and_Specialization}</td>
-              <td>{data.Phone_Number}</td>
-              <td>{data.SFID}</td>
-              <td>{data.Stream}</td>
-              <td>{data.Branch}</td>
-              <td>{data.Score}</td>
-              <td>
-              <button  onClick={() => handleurl(data.Resume_Link)}>
-              Resume Link
-            </button></td>
-              <td>{data.Test_Taken===true?"True":"False"}</td>
-              {/* Add more table data cells as needed */}
-            </tr>
-          ))}
-        </tbody>
-        </table>
+      <DataTable value={tableData}  removableSort showGridlines paginator rows={2} filters={filters} header={headers} >
+      <Column field="Name" header="Name" sortable />
+      <Column field="College_Name" header="College"  sortable></Column>
+      <Column field="Rollno" header="Roll No" sortable ></Column>
+      <Column field="EmailID" header="Email" ></Column>
+      <Column field="Gender" header="Gender" ></Column>
+      <Column field="Highest_Degree_and_Specialization" ></Column>
+      <Column field="Phone_Number" header="Phone No." ></Column>
+      <Column field="SFID" header="SF ID" ></Column>
+      <Column field="Stream" header="Degree" ></Column>
+      <Column field="Branch" header="Branch" ></Column>
+      <Column field="Score" header="Score" sortable></Column>
+      
+      <Column field="Test_Taken" header="Test Taken" />
+      <Column body={renderButton} header="Resume" />
+      </DataTable>
     </div>
   )
 }

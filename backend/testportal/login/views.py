@@ -3,12 +3,7 @@ from rest_framework.decorators import api_view
 from .models import Login
 from .models import TempLogin
 from django.http import JsonResponse
-from rest_framework.response import Response
-import pandas as pd
-from django.conf import settings
-from django.core.mail import send_mail
-import  random
-from quizquestions.models import Questions
+
 
 # Create your views here.
 @api_view(['GET', 'POST'])
@@ -38,41 +33,8 @@ def login(request):
 
 
 
-# def send(email,username,password):
-#     subject = 'welcome to Whirlpool Test Portal'
-#     message = f'Hi {username},\n Your Login Id: {email}\n Your Password: {password}\n ALL THE BEST FOR TEST \n Thank You'
-#     email_from = settings.EMAIL_HOST_USER
-#     recipient_list = [email, ]
-#     send_mail( subject, message, email_from, recipient_list )
-#     return
 
-@api_view(['GET', 'POST'])
-@csrf_exempt 
-def home(request):
-   if(request.method == 'POST'):
-      # df = pd.read_excel(request.FILES['email'])
-      # print(df)
-      # for i in range(len(df)):
-      #    password =random.randint(1000,99999)
-      #    res=Login.objects.filter(email=df.iloc[i, 0]).count()
-      #    if(res==0):
-      #       query=Login(email=df.iloc[i, 0],password=password)
-      #       query.save()
-      #       send(df.iloc[i, 0],df.iloc[i, 1],password)
-      #       print("email send!!")
-      #    else:
-      #       print("email exists!!")
-      df = pd.read_excel(request.FILES['question'])
-      for i in range(len(df)):
-         res=Questions.objects.filter(question=df.iloc[i, 0],option1=df.iloc[i, 1],option2=df.iloc[i, 2],option3=df.iloc[i, 3],option4=df.iloc[i, 4],answer=df.iloc[i, 5],stream=df.iloc[i, 6],branch=df.iloc[i,7]).count()
-         if(res==0):
-            query=Questions(question=df.iloc[i, 0],option1=df.iloc[i, 1],option2=df.iloc[i, 2],option3=df.iloc[i, 3],option4=df.iloc[i, 4],answer=df.iloc[i, 5],stream=df.iloc[i, 6],branch=df.iloc[i,7])
-            query.save()
-         else:
-            print("question already present!!")
-      return JsonResponse({'message':"questions saved successfully!!!"})
-   else:
-      return JsonResponse({'error': 'Need POST request.'},status=400)
+
 
 @api_view(['GET', 'POST'])
 @csrf_exempt 

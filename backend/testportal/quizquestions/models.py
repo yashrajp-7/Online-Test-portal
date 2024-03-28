@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.utils import timezone
 choice=(
     ("B.Tech","B.Tech"),
     ("M.Tech","M.Tech"),
@@ -37,6 +37,8 @@ choice2=(
 
 class  Questions(models.Model):
     id = models.BigAutoField(primary_key=True)
+    date=models.CharField(max_length=100) 
+    filename=models.CharField(max_length=500)
     question= models.CharField(max_length=500)
     option1=models.CharField(max_length=500)
     option2=models.CharField(max_length=500)
@@ -44,6 +46,7 @@ class  Questions(models.Model):
     option4=models.CharField(max_length=500)
     answer= models.CharField(max_length=500)
     stream= models.CharField(max_length=100,choices=choice)
-    branch=models.CharField(max_length=100,choices=choice2,default="Computer Science Engineering")
+    branch=models.CharField(max_length=100,choices=choice2)
+    take=models.BooleanField(default=True)
     def __str__(self):
         return str(self.id)

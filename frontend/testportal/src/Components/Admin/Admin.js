@@ -47,29 +47,16 @@ const Admin = () => {
         },
         
       }).then(response => {alert(response.data.message);
-        setloading("false");})
+        setloading("false");
+        setQuestionsFile(null);
+        setfilenamequestion("");
+      })
         .catch (error=>{
           setloading("false")
       console.error("Error uploading files:", error);
       alert("Failed to upload files. Please try again later.");
         }) 
       
-  };
-  const handleDownload=async()=>{
-    axios.get('http://127.0.0.1:8000/submit/result/',{responseType:'blob'})
-    .then(response=>
-      {
-        const url= window.URL.createObjectURL(new Blob([response.data]));
-        const link=document.createElement('a');
-        link.href=url;
-        link.setAttribute('download',"result of student.xlsx");
-        document.body.appendChild(link);
-        link.click();
-      })
-      .catch(error=>{
-        console.log(error);
-        alert("Error in download!!!");
-      })
   };
 
 
