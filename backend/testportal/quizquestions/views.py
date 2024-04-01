@@ -7,6 +7,7 @@ from rest_framework.response import Response
 import pandas as pd
 from quizquestions.models import Questions
 import datetime
+import json
 # Create your views here.
 @api_view(['GET', 'POST'])
 @csrf_exempt 
@@ -44,3 +45,35 @@ def home(request):
       return JsonResponse({'message':"questions saved successfully!!!"})
    else:
       return JsonResponse({'error': 'Need POST request.'},status=400)
+
+
+@api_view(['GET', 'POST'])
+@csrf_exempt 
+def questionset(request):
+   if(request.method=='GET'):
+      q=df = pd.DataFrame(list(Questions.objects.all().values('date','filename','stream','branch','take')))
+      print(q)
+      df = q.drop_duplicates()
+      print(df)
+      res=list()
+      for i in df.index:
+         d=dict()
+         d['date']=df['date'][i]
+         d['filename']=df['filename'][i]
+         d['stream']=df['stream'][i]
+         d['branch']=df['branch'][i]
+         if(df['take'][i]):
+            d['take']=True
+         else:
+            d['take']=False
+         res.append(d)
+      print(res)
+      return JsonResponse({'message': res})
+   if(request.method=='POST'):
+      data=json.loads(request.body)
+      print(data)
+      for i in data:
+         q=Questions.objects.filter(date=i['date'],filename=i['filename'],stream=i['stream'],branch=i['branch']).values()
+         q.update(take=i['take'])
+         print(q)
+      return JsonResponse({'message': 'done'})

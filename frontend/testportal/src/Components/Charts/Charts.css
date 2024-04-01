@@ -1,0 +1,74 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    background-color: #ffffff;
+  }
+  
+  .candidate_count {
+    align-self:center;
+    margin-top: 20px;
+    background-color: #DFFAD2; 
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width:30%;
+  }
+  
+  .chart-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-template-rows: repeat(2, 1fr); 
+    grid-gap: 30px;
+    margin-top: 30px;
+  }
+  
+  .chart {
+    width: 350px;
+   
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2vh 2vh 2vh 2vh;
+  }
+
+  .chart h3 {
+    font-family:"Nunito Sans";
+    font-size: larger;
+    margin-bottom: 5px;
+  }
+  .chart p {
+    margin-bottom: 10px; 
+  }
+
+  .chart hr {
+    width: 100%; 
+    border: none;
+    border-top: 1px solid #050505; 
+    margin-bottom: 10px; 
+  }
+  
+  
+  .chart:hover {
+    transform: translateY(-5px); 
+    transition: transform 0.3s ease;
+  }
+
+  .all-chart-container{
+    background-color: #ffffff;
+    padding: 2vh 2vh 2vh 2vh;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 20px;
+  }
+
+  .outerchart
+  {
+    background-color: black;
+    height: 100vh;
+  }

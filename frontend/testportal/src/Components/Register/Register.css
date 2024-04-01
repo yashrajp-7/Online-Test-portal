@@ -1,13 +1,7 @@
 
 
-
+/* 
 .register {
-  /* display: flex;
-  flex-direction: column;
-  background: #fff;
-  align-items: center;
-  border-radius: 15px;
-  padding: 20px; */
   background-color: #fff;
     border-radius: 15px;
     padding: 20px;
@@ -138,4 +132,166 @@ background-color: #ffc107;
   padding: 8px;
   font-size: 16px;
   width: 150px;
+} */
+
+.register {
+  /* display: flex;
+  flex-direction: column;
+  background: #fff;
+  align-items: center;
+  border-radius: 15px;
+  padding: 20px; */
+  background-color: #fff;
+    border-radius: 15px;
+    padding: 20px;
+    padding-top: -1px;
+    padding-right: -2px;
+    text-align: center;
+    width: 847.36px; 
+    height: max-content;
+    border: 1px solid #dddfe2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding:24px, 20px, 24px, 20px;
+    gap:12px; 
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.leftSide{
+  margin-left: 5px;
+} .rightSide {
+ margin-right: 5px;
+}
+
+.register input[type="email"] {
+  
+  font-size: 16px;
+  border: 2px solid lightgrey;
+  outline: none;
+  font-family: Nunito Sans;
+  color: #1d2129;
+  margin: 2% 0;
+  height:42px;
+  width: 400px;
+  padding: 10px, 228px, 10px, 10px;
+  border-radius: 8px;
+  gap:10px; 
+}
+.register input[type="text"] {
+  border: 2px solid lightgrey;
+  outline: none;
+  color: #1d2129;
+  font-family: Nunito Sans;
+  margin: 2% 0;
+  height:42px;
+  width: 400px;
+  padding: 10px, 228px, 10px, 10px;
+  border-radius: 8px;
+  gap:10px;
+  font-size: 16px;
+  
+}
+ 
+
+
+.error {
+  color: red;
+  text-align: left;
+  margin: auto;
+  font-size: 16px;
+  padding: 0px 1rem;
+}
+
+.button1{
+background-color: #ffc107;
+  color: rgb(0, 0, 0);
+  margin-top: 20px;
+  font-family: Nunito Sans;
+   margin-left: 500px;
+   font-size: 16px;
+   font-weight: 700;
+
+}
+.outer
+{
+  background-color: #F5F5F5;
+    width: 100%;
+    height:100%;
+    background-size: 90%;
+    background-repeat: no-repeat;
+  
+}
+.register label {
+ 
+  text-align: left;
+  float: left;
+  margin-left:0;
+  font-weight: 600;
+  font-family: Nunito Sans;
+  line-height: 21.82px;
+  height:23px;
+  width: 271px;
+  padding: 10px, 228px, 10px, 10px;
+  border-radius: 8px;
+  gap:10px;
+  margin-bottom: 10px;
+}
+
+.dropdowns {
+  display: flex;
+  flex-direction:column;
+  justify-content: center;
+  margin-bottom: 40px;
+  font-family: Nunito Sans;
+}
+
+.dropdown {
+  margin-right: 20px;
+  font-family: Nunito Sans;
+  width:400px;
+}
+.fileuppload
+{
+  margin-right: 0px;
+  align-items:normal;
+  width: 50%;
+  font-family: Nunito Sans;
+  
+}
+.dropdown label {
+  display: block;
+  margin-bottom: 5px;
+  font-family: Nunito Sans;
+}
+.fileuppload label {
+  display: block;
+  margin-bottom: 5px;
+  font-family: Nunito Sans;
+  
+}
+.fileuppload input {
+  padding-top: 4%;
+  font-family: Nunito Sans;
+  
+}
+
+.dropdown select {
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  font-size: 16px;
+  width: 150px;
+  font-family: Nunito Sans;
 }

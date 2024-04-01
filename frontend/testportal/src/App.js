@@ -9,6 +9,7 @@ import Congrats from "./Components/Congrats/Congrats";
 import Instruction from "./Components/Instruction/Instruction";
 import Admin from "./Components/Admin/Admin";
 import Result from "./Components/Result/Result";
+import Charts from "./Components/Charts/Charts";
 import PasswordChangePage from "./Components/PasswordChange/Passwordchange";
 function App() {
   const [userstate, setUserState] = useState({
@@ -29,6 +30,7 @@ function App() {
           <Route path="/Congrats" element ={<Congrats/>}></Route>
           <Route path="/Result" element ={<Result/>}></Route>
           <Route path="/password" element ={<PasswordChangePage/>}></Route>
+          <Route path="/chart" element ={<Charts/>}></Route>
         </Routes>
       </Router>
  </div>

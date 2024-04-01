@@ -1,0 +1,32 @@
+.navbar2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px;
+    height: 15px;
+    background-color: #ffffff; 
+    color: #000000; 
+  }
+  
+  .navbar-left2 {
+    font-size: 25px;
+  }
+  
+  .navbar-right2 {
+    display: flex;
+    align-items:center;
+  
+  }
+  
+  .profile-pic2 {
+    font-size: 24px; 
+    width: 40px; 
+    height: 40px; 
+    line-height: 40px; 
+    border-radius: 50%; 
+    text-align: center; 
+    margin-right: 10px; 
+  }
+  .letterY{
+    color:#ffc107;
+  }

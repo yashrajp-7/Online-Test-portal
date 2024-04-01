@@ -28,6 +28,7 @@ export const Result = () => {
     Stream: {value:null , matchMode: FilterMatchMode.STARTS_WITH},
     Branch: {value:null , matchMode: FilterMatchMode.STARTS_WITH},
     Score: {value:null , matchMode: FilterMatchMode.GREATER_THAN_OR_EQUAL_TO},
+    Test_Taken: {value:null , matchMode: FilterMatchMode.CONTAINS},
 });
 const [globalFilterValue, setGlobalFilterValue] = useState('');
   useEffect(()=>{
@@ -93,11 +94,11 @@ const [globalFilterValue, setGlobalFilterValue] = useState('');
   const headers = renderHeader();
     
   return (
-    <div className='main' style={{height:'100%',backgroundColor:'#FAECDD'}}>
+    <div className='main' style={{height:'100%',backgroundColor:'#F5F5F5'}}>
         <Navbar /> 
         <h1>Result of Students</h1>
         <button className={"downloadresult"} onClick={handledownload}>Export to xlsx</button>
-      <DataTable value={tableData}  removableSort showGridlines paginator rows={2} filters={filters} header={headers} >
+      <DataTable value={tableData}  removableSort showGridlines paginator rows={5} filters={filters} header={headers} >
       <Column field="Name" header="Name" sortable />
       <Column field="College_Name" header="College"  sortable></Column>
       <Column field="Rollno" header="Roll No" sortable ></Column>

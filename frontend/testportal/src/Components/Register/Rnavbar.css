@@ -1,0 +1,21 @@
+.navbar1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 15px;
+    height: 15px;
+    background-color: #ffffff; 
+    color: #000000; 
+  }
+  .navbar-left1 {
+    font-size: 25px;
+  }
+  
+  .navbar-right1 {
+    display: flex;
+    align-items:center;
+  
+  }
+  .letterY{
+    color:#ffc107;
+  }
