@@ -1,139 +1,3 @@
-
-
-/* 
-.register {
-  background-color: #fff;
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    width: 600px; 
-    height: max-content;
-    border: 1px solid #dddfe2;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  
-
-}
-
-.gridContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
-}
-
-.leftSide {
-  display: flex;
-  flex-direction: column;
-}
-
-.rightSide {
-  display: flex;
-  flex-direction: column;
-}
-.register input[type="email"] {
-  border-radius: 20px;
-  border: 2px solid lightgrey;
-  outline: none;
-  color: #1d2129;
-  margin: 2% 0;
-  width: 90%;
-  padding: 12px;
-  font-size: 16px;
-  
-}
-.register input[type="text"] {
-  border-radius: 20px;
-  border: 2px solid lightgrey;
-  outline: none;
-  color: #1d2129;
-  margin: 2% 0;
-  width: 90%;
-  padding: 12px;
-  font-size: 16px;
-  
-}
- 
-
-
-.error {
-  color: red;
-  text-align: left;
-  margin: auto;
-  font-size: 16px;
-  padding: 0px 1rem;
-}
-
-.button1{
-background-color: #ffc107;
-  color: white;
-  margin-top: 20px;
-  
-   margin-left: 500px;
-
-}
-.outer
-{
-  background-color: #FAECDD;
-    width: 100%;
-    height:100%;
-    background-size: 90%;
-    background-repeat: no-repeat;
-  
-}
-.register label {
- 
-  text-align: left;
-  float: left;
-  margin-left:15px;
-  font-weight: bold;
-}
-
-
-.dropdowns {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.dropdown {
-  margin-right: 20px;
-}
-.fileuppload
-{
-  margin-right: 20px;
-  align-items:normal;
-  width: 50%;
-  
-}
-.dropdown label {
-  display: block;
-  margin-bottom: 5px;
-}
-.fileuppload label {
-  display: block;
-  margin-bottom: 5px;
-}
-.fileuppload input {
-  padding-top: 5%;
-  
-}
-
-.dropdown select {
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  padding: 8px;
-  font-size: 16px;
-  width: 150px;
-} */
-
 .register {
   /* display: flex;
   flex-direction: column;
@@ -166,19 +30,22 @@ background-color: #ffc107;
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
+  grid-gap: 40px;
 }
 
-.leftSide{
-  margin-left: 5px;
-} .rightSide {
- margin-right: 5px;
+.input-place{
+  width: 100%;
+  box-sizing: border-box;
 }
+.leftSide .input-place, .rightSide .input-place{
+  width: calc(100%, -20px);
+}
+
 
 .register input[type="email"] {
-  
+  border: none;
   font-size: 16px;
-  border: 2px solid lightgrey;
+  background-color: #F2F2F2;
   outline: none;
   font-family: Nunito Sans;
   color: #1d2129;
@@ -190,7 +57,8 @@ background-color: #ffc107;
   gap:10px; 
 }
 .register input[type="text"] {
-  border: 2px solid lightgrey;
+  border: none;
+  background-color: #F2F2F2;
   outline: none;
   color: #1d2129;
   font-family: Nunito Sans;
@@ -255,12 +123,14 @@ background-color: #ffc107;
   justify-content: center;
   margin-bottom: 40px;
   font-family: Nunito Sans;
+  /* width:700px; */
+  
 }
 
 .dropdown {
-  margin-right: 20px;
+  
   font-family: Nunito Sans;
-  width:400px;
+  /* width:700px; */
 }
 .fileuppload
 {
@@ -282,16 +152,27 @@ background-color: #ffc107;
   
 }
 .fileuppload input {
-  padding-top: 4%;
   font-family: Nunito Sans;
-  
 }
 
 .dropdown select {
+  border: none;
   border-radius: 5px;
-  border: 1px solid #ccc;
-  padding: 8px;
+  background-color: #F2F2F2;
   font-size: 16px;
   width: 150px;
   font-family: Nunito Sans;
+  margin-left: 0;
+  margin-right: 250px;
+  box-sizing: border-box;
+}
+
+.fileup{
+  margin-right: 250px;
+  border: none;
+}
+
+.fileuppload{
+  margin-left: 20px;
+  
 }

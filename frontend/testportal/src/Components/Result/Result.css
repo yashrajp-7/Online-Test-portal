@@ -1,31 +1,38 @@
-.report{
-  margin-top: 1%;
-    border: 1px solid rgb(10, 8, 8);
-    height: auto;
-    overflow: auto;
-    border-radius:4px ;
-    max-height: 400px;
-    width: 90vw;
-    position: relative;
-    left: 4vw;
-    text-align: center;
-    align-items: center;
-  }
+
 h1{
   text-align: center;
 }
-.report th {
-    border: 1px solid #1d1212;
-    text-align: left;
-    padding: 8px;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    background-color: #ffc107;
-    color: white;
-  }
+
   .downloadresult
   {
-    margin-left: 87%;
+    margin-left: 93%;
+    margin-bottom: 1%;
     background-color: green;
+  }
+
+  
+  .mainResult {
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Responsive styles for the DataTable */
+  .p-datatable-wrapper {
+    height:calc(5*90px);
+    overflow-x: auto; /* Horizontal scrolling for the DataTable */
+    max-width: 100%; /* Ensure the DataTable wrapper doesn't exceed viewport width */
+    overflow-y: auto;
+  }
+  
+  /* Responsive styles for the DataTable */
+  .p-datatable {
+    min-width: 100%; /* Ensure DataTable takes full width of its container */
+  }
+  
+  /* Responsive styles for the columns */
+  .p-datatable table thead th,
+  .p-datatable table tbody td {
+    white-space: nowrap; /* Prevent text wrapping */
+    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+    overflow: hidden;
   }

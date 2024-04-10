@@ -9,17 +9,14 @@ import pandas as pd
 from django.http import HttpResponse
 
 
-
-
-
 # Create your views here.
 @api_view(['GET', 'POST'])
 @csrf_exempt 
 def signup(request):
     if(request.method == 'POST'):
         a=Student.objects.filter(email=request.POST.get('email')).count()
-        print(request.FILES)
-        if(a==0):
+        b=Student.objects.filter(rollno=request.POST.get('rollno')).count()
+        if(a==0 and b == 0):
             form=SignupForm(request.POST,request.FILES)
             if form.is_valid():
                 form.save()
@@ -46,9 +43,9 @@ def submit(request):
         data=request.data
         res.score=data['score']
         res.test_taken=data['test_taken']
+        res.tabSwitchCount=data['TabSwitchCount']
         res.save()
         res=Student.objects.all().values()
-        print(res)
         return JsonResponse({'message':"sucessfully submitted!!!"})
     else:
         return JsonResponse({'error': 'Need POST request.'},status=400)
@@ -75,6 +72,7 @@ def resultfile(request):
                 "Branch":i['branch'],
                 "Test_Taken":i['test_taken'],
                 "Score":i['score'],
+                'TabSwitchCount':i['tabSwitchCount'],
                 "Resume_Link":("http://127.0.0.1:8000/media/"+i['resume'])
             }
             res.append(d)

@@ -1,205 +1,6 @@
 
 
 
-// import React, { useState,useEffect } from "react";
-// // import basestyle from "../Base.module.css";
-// import "./Admin.css";
-// import Navbar from "./Navbar";
-// import axios from "axios";
-
-
-// const Admin = () => {
-//   const [questionsFile, setQuestionsFile] = useState(null);
-//   const [filenamequestion,setfilenamequestion]=useState("");
-//   const[loading,setloading]=useState("false");
-
-//   useEffect(()=>{
-//     if(localStorage.getItem("loginemail")===null)
-//     {
-//       window.location.href="/adminlogin"
-//     }
-//   })
-//   const handleQuestionsUpload = (e) => {
-//     const file = e.target.files[0];
-//     setQuestionsFile(file);
-//     setfilenamequestion(e.target.files[0].name);
-//   };
-//   const handleSave = ()=>
-//   {
-//     if(questionsFile === null)
-//     {
-//       alert("File Compulsory for saving!!!")
-//     }
-//     else{
-//       setloading("true");
-//       handleSave2();
-//     }
-
-//   };
-//   const handleSave2 =  () => {
-    
-//       // Send user data and questions files to the backend for processing
-//       const formData = new FormData();
-//       formData.append("question", questionsFile,"question.xlsx");
-//       axios.post("http://127.0.0.1:8000/login/home/", formData,{
-//         headers: {
-//           'Content-Type': 'multipart/form-data',
-//         },
-        
-//       }).then(response => {alert(response.data.message);
-//         setloading("false");
-//         setQuestionsFile(null);
-//         setfilenamequestion("");
-//       })
-//         .catch (error=>{
-//           setloading("false")
-//       console.error("Error uploading files:", error);
-//       alert("Failed to upload files. Please try again later.");
-//         }) 
-      
-//   };
-
-
-
-// return (
-  
-//   <div style={{width:"100%",height:"100%"}}>
-//       {loading==="true"?(<div className="loader-container">
-//         <div className="spinner"></div>
-//       </div>):(
-//         <div style={{width:"100%",height:"100%"}}>
-//     <Navbar /> 
-//     <div className={"container"}>
-//     <div className={"admin"}>
-//   <h2>Admin Options</h2>
-//   <div className="file-upload">
-//     <label><b>Upload Questions</b></label>
-//     <div className="file-input">
-//       <input type="file" onChange={handleQuestionsUpload} accept=".xlsx, .xls, .csv" />
-//       <input type="text" disabled placeholder={filenamequestion===""?"Choose File":filenamequestion} />
-//     </div>
-//   </div>
-
-//   <button className={"button_common"} onClick={handleSave}>Save</button>
-// </div>
-
-//     </div>
-//     </div>)}
-//     </div>
-  
-// );
-
-// };
-// export default Admin;
-
-
-
-// import React, { useState,useEffect } from "react";
-// // import basestyle from "../Base.module.css";
-// import "./Admin.css";
-// import Navbar from "./Navbar";
-// import axios from "axios";
-
-
-// const Admin = () => {
-//   const [questionsFile, setQuestionsFile] = useState(null);
-//   const [filenamequestion,setfilenamequestion]=useState("");
-//   const[loading,setloading]=useState("false");
-
-//   useEffect(()=>{
-//     if(localStorage.getItem("loginemail")===null)
-//     {
-//       window.location.href="/adminlogin"
-//     }
-//   })
-//   const handleQuestionsUpload = (e) => {
-//     const file = e.target.files[0];
-//     setQuestionsFile(file);
-//     setfilenamequestion(e.target.files[0].name);
-//   };
-//   const handleSave = ()=>
-//   {
-//     if(questionsFile === null)
-//     {
-//       alert("File Compulsory for saving!!!")
-//     }
-//     else{
-//       setloading("true");
-//       handleSave2();
-//     }
-
-//   };
-//   const handleSave2 =  () => {
-    
-//       // Send user data and questions files to the backend for processing
-//       const formData = new FormData();
-//       formData.append("question", questionsFile,"question.xlsx");
-//       axios.post("http://127.0.0.1:8000/login/home/", formData,{
-//         headers: {
-//           'Content-Type': 'multipart/form-data',
-//         },
-        
-//       }).then(response => {alert(response.data.message);
-//         setloading("false");})
-//         .catch (error=>{
-//           setloading("false")
-//       console.error("Error uploading files:", error);
-//       alert("Failed to upload files. Please try again later.");
-//         }) 
-      
-//   };
-//   const handleDownload=async()=>{
-//     axios.get('http://127.0.0.1:8000/submit/result/',{responseType:'blob'})
-//     .then(response=>
-//       {
-//         const url= window.URL.createObjectURL(new Blob([response.data]));
-//         const link=document.createElement('a');
-//         link.href=url;
-//         link.setAttribute('download',"result of student.xlsx");
-//         document.body.appendChild(link);
-//         link.click();
-//       })
-//       .catch(error=>{
-//         console.log(error);
-//         alert("Error in download!!!");
-//       })
-//   };
-
-
-
-// return (
-  
-//   <div style={{width:"100%",height:"100%"}}>
-//       {loading==="true"?(<div className="loader-container">
-//         <div className="spinner"></div>
-//       </div>):(
-//         <div style={{width:"100%",height:"100%"}}>
-//     <Navbar /> 
-//     <div className={"container"}>
-//     <div className={"admin"}>
-//   <h2>Admin Options</h2>
-//   <div className="file-upload">
-//     <label><b>Upload Questions</b></label>
-//     <div className="file-input">
-//       <input type="file" onChange={handleQuestionsUpload} accept=".xlsx, .xls, .csv" />
-//       <input type="text" disabled placeholder={filenamequestion===""?"Choose File":filenamequestion} />
-//     </div>
-//   </div>
-
-//   <button className={"button_common"} onClick={handleSave}>Save</button>
-// </div>
-
-//     </div>
-//     </div>)}
-//     </div>
-  
-// );
-
-// };
-// export default Admin;
-
-
-
 import React, { useState, useEffect } from "react";
 import "./Admin.css";
 import Navbar from "./Navbar";
@@ -212,24 +13,41 @@ const Admin = () => {
   const [teststream, setStream] = useState("");
   const [testbranch, setBranch] = useState("");
   const [branchOptions, setBranchOptions] = useState([]);
-  var [tableData,settableData]=useState([]);
-  const [ischecked,setischecked]=useState(true);
+  const [tableData, settableData] = useState([]);
+  const [final,setfinal]=useState([]);
+  const [ischecked, setischecked] = useState(true);
+  var [newArray,setnewArray]=useState([]);
   useEffect(() => {
     if (localStorage.getItem("loginemail") === null) {
       window.location.href = "/adminlogin";
     }
   }, []);
-  useEffect(async()=>{
+
+  useEffect(() => {
+    if (localStorage.getItem("loginemail") === null) {
+      window.location.href = "/adminlogin";
+    } else {
+      // Disable body scroll
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Cleanup function to re-enable scrolling
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
+
+  useEffect(async () => {
     try {
       const response = await axios.get(`http://127.0.0.1:8000/questions/questionset/`);
       console.log(response.data.message);
-      settableData(response.data.message)
-
-      
+      settableData(response.data.message);
+      setfinal(response.data.message);
     } catch (error) {
       console.error('Error::', error);
     }
-  },[])
+  }, []);
+
   const handleQuestionsUpload = (e) => {
     const file = e.target.files[0];
     setQuestionsFile(file);
@@ -237,25 +55,25 @@ const Admin = () => {
   };
 
   const handleSave = () => {
-    if(teststream==="" || testbranch==="")
-    {
+    if (teststream === "" || testbranch === "") {
       alert("Select Stream and Branch!!!");
-    }
-    else{
-    if (questionsFile === null) {
-      alert("File is Compulsory for saving!!!");
     } else {
-      setLoading(true);
-      handleSave2();
+      if (questionsFile === null) {
+        alert("File is Compulsory for saving!!!");
+      } else {
+        setLoading(true);
+        handleSave2();
+      }
     }
-  }
   };
 
   const handleSave2 = () => {
     const formData = new FormData();
-    formData.append("question", questionsFile, "question.xlsx");
+    formData.append("question", questionsFile);
+    formData.append("stream",teststream);
+    formData.append("branch",testbranch)
     axios
-      .post("http://127.0.0.1:8000/login/home/", formData, {
+      .post("http://127.0.0.1:8000/questions/home/", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -265,6 +83,7 @@ const Admin = () => {
         setLoading(false);
         setQuestionsFile(null);
         setFilenamequestion("");
+        window.location.reload();
       })
       .catch((error) => {
         setLoading(false);
@@ -273,14 +92,12 @@ const Admin = () => {
       });
   };
 
- 
   const handleStreamChange = (event) => {
     const selectedStream = event.target.value;
     setStream(selectedStream);
-    // Update branch options based on the selected stream
     if (selectedStream === "M.Tech") {
       setBranchOptions([
-        "Electronics & Telecommunication Engineering", 
+        "Electronics & Telecommunication Engineering",
         "Mechanical Engineering",
         "Computer Science Engineering",
         "Manufacturing Engineering and Industrial Management",
@@ -293,21 +110,10 @@ const Admin = () => {
         "Artificial Intilligence & Machinie Learning",
         "Mechanis & Design",
         "Power Electronics & Power Systems",
-        
       ]);
-      
-    } 
-    else if (selectedStream === "B.Des") {
-      setBranchOptions([
-        "Product Design", 
-        "UI/UX Design"
-      ]);
-    }else if (selectedStream === "M.Des") {
-      setBranchOptions([
-        "Product Design", 
-        "UI/UX Design"
-      ]);
-    }else if (selectedStream === "B.Tech") {
+    } else if (selectedStream === "B.Des" || selectedStream === "M.Des") {
+      setBranchOptions(["Product Design", "UI/UX Design"]);
+    } else if (selectedStream === "B.Tech") {
       setBranchOptions([
         "Mechanical",
         "Computer Science",
@@ -318,16 +124,11 @@ const Admin = () => {
         "Chemical",
         "Production",
       ]);
-    }else if (selectedStream === "MS") {
-          setBranchOptions([
-            "Automobile",
-            "Interdisciplinary"
-          ]);
+    } else if (selectedStream === "MS") {
+      setBranchOptions(["Automobile", "Interdisciplinary"]);
     } else {
-      // Reset branch options if no stream is selected
       setBranchOptions([]);
     }
-    // Reset branch selection when stream changes
     setBranch("");
   };
 
@@ -335,29 +136,50 @@ const Admin = () => {
     setBranch(event.target.value);
   };
 
-
-  const handleSavequestionset=(event)=>{
-
-  };
-  const handlechange=(event,ind)=>{
-    console.log(ind)
-    for (var i in tableData) {
-      console.log(i)
-      if (i == ind) {
-        if(tableData[i].take)
-        {
-          tableData[i].take=false
+  const handlechange = (event, index) => {
+    settableData(prevTableData => {
+      return prevTableData.map((item, i) => {
+        if (i === index) {
+          console.log(event.target.checked);
+          console.log(item.take);
+          if(item.take){
+          return {
+            ...item,
+            take: false
+          };
         }
-        else
-        {
-          tableData[i].take=true
+        else{
+          return {
+            ...item,
+            take: true
+          };
         }
-         break; 
-      }
-    }
-    settableData(tableData)
-    console.log(tableData);
+        }
+        return item;
+      });
+    });
   };
+
+  const handleSavequestionset = (event) => {
+    
+      setLoading(true);
+      axios
+      .post("http://127.0.0.1:8000/questions/questionset/", tableData, {
+        headers: {
+          "Content-Type": "text/plain",
+        },
+      })
+      .then((response) => {
+        alert(response.data.message);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.error("Error uploading files:", error);
+        alert("Server is Busy!!!");
+      });
+  };
+
   return (
     <div style={{ width: "100%", height: "100%" }}>
       {loading ? (
@@ -384,14 +206,18 @@ const Admin = () => {
                   <tbody>
                     {tableData.map((item, index) => (
                       <tr key={index}>
-                        <td>{index+1}</td>
+                        <td>{index + 1}</td>
                         <td>{item.date}</td>
                         <td>{item.filename}</td>
                         <td>{item.stream}</td>
                         <td>{item.branch}</td>
                         <td>
                           <label className="switch">
-                          <input type="checkbox"  checked={item.take} onChange={e =>handlechange(e,index)} />
+                            <input
+                              type="checkbox"
+                              checked={item.take}
+                              onChange={(e) => handlechange(e, index)}
+                            />
                             <span className="slider round"></span>
                           </label>
                         </td>
@@ -408,34 +234,35 @@ const Admin = () => {
               <div className={"container"}>
                 <div className={"admin"}>
                   <h2>Admin Options</h2>
-                  <div className="dropdowns">
-        <div className="dropdown">
-          <label>Select your Stream</label>
-          <select value={teststream} onChange={handleStreamChange}>
-            <option value="">Select Stream</option>
-            <option value="B.Des">B.Des</option>
-            <option value="M.Des">M.Des</option>
-            <option value="B.Tech">B.Tech</option>
-            <option value="MS">M.S</option>
-            <option value="M.Tech">M.Tech</option>
-          </select>
-        </div>
-        </div>
-                 
-                  <div className="dropdowns">
-              <div className="dropdown">
-          <label>Select your Branch</label>
-          
-          <select value={testbranch} onChange={handleBranchChange}>
-          <option value="">Select Branch</option>
-            {branchOptions.map((option) => (
-              <option key={option} value={option}>{option}</option>
-            ))}
-          </select>
-        </div>
-        
-      </div>
-                 
+                  <div className="dropdowns6">
+                    <div className="dropdown6">
+                      <label>Select your Stream</label>
+                      <select value={teststream} onChange={handleStreamChange}>
+                        <option value="">Select Stream</option>
+                        <option value="B.Des">B.Des</option>
+                        <option value="M.Des">M.Des</option>
+                        <option value="B.Tech">B.Tech</option>
+                        <option value="MS">M.S</option>
+                        <option value="M.Tech">M.Tech</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="dropdowns6">
+                    <div className="dropdown6">
+                      <label>Select your Branch</label>
+
+                      <select value={testbranch} onChange={handleBranchChange}>
+                        <option value="">Select Branch</option>
+                        {branchOptions.map((option) => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+
                   <div className="file-upload">
                     <label>
                       <b>Upload Question Set</b>
@@ -449,11 +276,13 @@ const Admin = () => {
                       <input
                         type="text"
                         disabled
-                        placeholder={filenamequestion === "" ? "Choose File" : filenamequestion}
+                        placeholder={
+                          filenamequestion === "" ? "Choose File" : filenamequestion
+                        }
                       />
                     </div>
                   </div>
-                  <button className={"button_common"} onClick={handleSave}>
+                  <button className={"button_common18"} onClick={handleSave}>
                     Save
                   </button>
                 </div>

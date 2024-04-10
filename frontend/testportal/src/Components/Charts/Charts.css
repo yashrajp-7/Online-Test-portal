@@ -72,3 +72,23 @@
     background-color: black;
     height: 100vh;
   }
+
+  @media screen and (max-width: 768px) {
+    .candidate_count {
+      width: 90%;
+    }
+  
+    .chart-container {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .candidate_count {
+      width: 90%;
+    }
+  
+    .chart-container {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+  }

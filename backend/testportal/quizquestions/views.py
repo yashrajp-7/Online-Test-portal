@@ -1,4 +1,3 @@
-
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.decorators import api_view
 from .models import Questions
@@ -38,9 +37,10 @@ def ques(request):
 def home(request):
    if(request.method == 'POST'):
       df = pd.read_excel(request.FILES['question'])
+      print(request.FILES['question'].name)
       date=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
       for i in range(len(df)):
-         query=Questions(date=date,filename=request.FILES['question'],question=df.iloc[i, 0],option1=df.iloc[i, 1],option2=df.iloc[i, 2],option3=df.iloc[i, 3],option4=df.iloc[i, 4],answer=df.iloc[i, 5],stream=df.iloc[i, 6],branch=df.iloc[i,7])
+         query=Questions(date=date,filename=request.FILES['question'].name,question=df.iloc[i, 0],option1=df.iloc[i, 1],option2=df.iloc[i, 2],option3=df.iloc[i, 3],option4=df.iloc[i, 4],answer=df.iloc[i, 5],stream=request.POST.get('stream'),branch=request.POST.get('branch'))
          query.save()
       return JsonResponse({'message':"questions saved successfully!!!"})
    else:
@@ -76,4 +76,4 @@ def questionset(request):
          q=Questions.objects.filter(date=i['date'],filename=i['filename'],stream=i['stream'],branch=i['branch']).values()
          q.update(take=i['take'])
          print(q)
-      return JsonResponse({'message': 'done'})
+      return JsonResponse({'message': 'Modification in question set is done!!!'})

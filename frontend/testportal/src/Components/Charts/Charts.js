@@ -121,6 +121,7 @@ const Charts = () => {
     const calculateEfficiencyValue = (data, passMark) => {
         const efficiencyDict = {};
         let MostEfficientCollege=""
+        let maxxPercentage=0;
         let TotalPassCount=0;
         data.forEach(student => {
           const collegeName = student.College_Name;
@@ -142,12 +143,12 @@ const Charts = () => {
           const { totalStudents, abovePassStudents } = efficiencyDict[collegeName];
           const efficiencyPercentage = (abovePassStudents / totalStudents) * 100;
           TotalPassCount+=abovePassStudents;
-          if (efficiencyPercentage.toFixed(2) > 0) {
+          if (efficiencyPercentage > maxxPercentage) {
             MostEfficientCollege=collegeName;
-          }
+            maxxPercentage=efficiencyPercentage;
+          }  
           finalResult[collegeName] = efficiencyPercentage.toFixed(2);
         });
-      
         return (
             {
                 labels:Object.keys(finalResult),
@@ -165,10 +166,10 @@ const Charts = () => {
             label: 'Efficiency Rate(%)',
             data: calculateEfficiencyValue(tableData,passMark).data,
             backgroundColor: [
-                '#F8961E', '#B86E9F','#2D9CDB','#F9C74F','#F3722C',
+              '#F8961E', '#B86E9F','#2D9CDB','#F9C74F','#F3722C','#90BE6D'
             ],
             borderColor: [
-                '#F8961E', '#B86E9F','#2D9CDB','#F9C74F','#F3722C',
+              '#F8961E', '#B86E9F','#2D9CDB','#F9C74F','#F3722C','#90BE6D'
             ],
             borderWidth: 1,
           },
@@ -203,14 +204,15 @@ const Charts = () => {
             label: 'No of Applications',
             data: getStudentCountByCollegeDict(tableData,'College_Name').data,
             backgroundColor: [
-                '#F8961E', '#B86E9F','#2D9CDB','#F9C74F','#F3722C',
+                '#F8961E', '#B86E9F','#2D9CDB','#F9C74F','#F3722C','#90BE6D'
             ],
             borderColor: [
-                '#F8961E', '#B86E9F','#2D9CDB','#F9C74F','#F3722C',
+                '#F8961E', '#B86E9F','#2D9CDB','#F9C74F','#F3722C','#90BE6D'
             ],
             borderWidth: 1,
           },
         ],
+        
       };
 
       const dataforDepartmentWiseApplications = {
@@ -220,10 +222,10 @@ const Charts = () => {
             label: 'No of Applications',
             data: getStudentCountByCollegeDict(tableData,'Stream').data,
             backgroundColor: [
-                '#2D9CDB','#F9C74F','#F3722C','#F8961E', '#B86E9F',
+              '#F8961E', '#B86E9F','#2D9CDB','#F9C74F','#F3722C','#90BE6D'
             ],
             borderColor: [
-                '#2D9CDB','#F9C74F','#F3722C','#F8961E', '#B86E9F',
+                '#F8961E', '#B86E9F','#2D9CDB','#F9C74F','#F3722C','#90BE6D'
             ],
             borderWidth: 1,
           },
@@ -237,10 +239,10 @@ const Charts = () => {
             label: 'No of Applications',
             data: getStudentCountByCollegeDict(tableData,'Gender').data,
             backgroundColor: [
-                '#B86E9F', '#90BE6D',
+                '#B86E9F', '#90BE6D','#F8961E'
             ],
             borderColor: [
-                '#B86E9F', '#90BE6D',
+                '#B86E9F', '#90BE6D','#F8961E'
             ],
             borderWidth: 1,
           },
@@ -262,6 +264,7 @@ const Charts = () => {
             borderWidth: 1,
           },
         ],
+        
     } 
 
     const options = {
@@ -320,6 +323,7 @@ const Charts = () => {
         today = dd + '/' + mm + '/' + yyyy;
         return today;
     }
+    const [visible, setVisible] = useState(false);
     
   return (
     <div className="outerchart" style={{height:"100%",width:"100%"}}>
@@ -337,7 +341,7 @@ const Charts = () => {
            <h3>Applications per college-{totalData}</h3>
            <p>Total applications received as - {getDate()}</p>
            <hr/>
-           <Chart  type="pie" data={dataforStudentsPerCollege}  />
+           <Chart  type="pie" data={dataforStudentsPerCollege} />
         </div>
         <div className="chart">
         <h3>Department-wise Applications-{totalData}</h3>

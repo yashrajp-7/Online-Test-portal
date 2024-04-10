@@ -1,0 +1,116 @@
+
+
+.big1
+{
+  background-image: url("../../Assets/login-background.png");
+  width: 100%;
+  height:100vh;
+background-size: 90%;
+background-repeat: no-repeat;
+ margin-right: 50%;
+}
+
+.login1 {
+  width: 628px;
+  height:440px;
+  border: 1px solid #dddfe2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 10px; 
+  padding: 20px, 20px, 43px, 20px;
+  display: flex;
+  flex-direction: column;
+  /* align-items: left; */
+  text-align: center;
+  position: relative;
+  margin-left: 400px;
+
+  top:150px;   
+  left:850px;
+  border:1px;
+
+  gap:80px;
+}
+
+
+.login1 > form input {
+  border-radius: 20px;
+  border: 0.7px solid lightgrey;
+  outline: none;
+  color: #000000;
+  margin: 2% 0;
+  padding: 8px;
+  font-size: 17px;
+  width:480px;
+  height:43.75px;
+  top:132.85px;
+
+  rotate: 0;
+}
+
+.login1 form input[type="checkbox"] {
+  display: none;
+}
+
+.login1 form .checkboxContainer {
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+}
+
+.login1 form .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 3px;
+}
+
+.login1 form input[type="checkbox"]:checked + .checkmark:after {
+  content: "\2713";
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  color: #ffffff;
+}
+
+.login1 form input[type="checkbox"]:checked + .checkmark {
+  background-color: #007bff;
+}
+
+.login1 .termsContainer,
+.login1 .privacyContainer {
+  width: 90%;
+  margin-top: 10px;
+  max-height: 150px; 
+  overflow-y: auto; 
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 10px;
+} 
+
+.login1 .scrollableContent {
+  overflow-y: auto; 
+}
+
+.button_common09 {
+  background-color: #F0B310;
+  border: none;
+  font-size: 24px;
+  font-family: Nunito Sans;
+  width:50%;
+  height:58.75px;
+  top: 602.6px;
+  left: 20px;
+  color: #000000;
+  margin-top: 10px;
+
+}
+.error {
+  color: red;
+  text-align: left;
+  margin: auto;
+  font-size: 16px;
+  padding: 0px 1rem;
+}
