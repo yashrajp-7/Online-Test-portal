@@ -69,7 +69,7 @@ const Login = () => {
     {
       const p=new URLSearchParams({tempid:user.tempid,password:user.password});
       try {
-        const response = await axios.get(`http://localhost:8000/login/?${p}`);
+        const response = await axios.get(`https://arun2024.pythonanywhere.com/login/?${p}`);
         if(response.data.message==="valid student!")
         {
           localStorage.setItem("tempid",user.tempid)

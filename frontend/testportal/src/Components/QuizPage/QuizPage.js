@@ -44,7 +44,7 @@ const QuizPage = () => {
             setoption(new Array(storedShuffledQuestions.length).fill(10));
           }else{
             try {
-              const response = await axios.get(`http://localhost:8000/questions/?${p}`);
+              const response = await axios.get(`https://arun2024.pythonanywhere.com/questions/?${p}`);
               console.log(response.data.data);
               question=response.data.data
       
@@ -116,7 +116,7 @@ const QuizPage = () => {
         // text: "You clicked the button!",
         icon: 'error',
       });
-        setTabSwitch(TabSwitch+1);
+        setTabSwitch(TabSwitch=>TabSwitch+1);
     }
       // Tab switch prevent
       useEffect(() => {
@@ -145,6 +145,7 @@ const QuizPage = () => {
           } else {
             // Auto-submit the quiz when time runs out
             autosubmit()
+
           }
         }, 1000);
         

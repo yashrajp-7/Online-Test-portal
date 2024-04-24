@@ -9,7 +9,7 @@ choice=(
     )
 choice2=(
     ("Applied Mechanics(Fluid Mechanics)","Applied Mechanics(Fluid Mechanics)"),
-    ("Artificial Intilligence & Machinie Learning","Artificial Intilligence & Machinie Learning"),
+    ("Artificial Intelligence & Machine Learning","Artificial Intelligence & Machine Learning"),
     ("Computer Science Engineering","Computer Science Engineering"),
     ("Design Engineering","Design Engineering"),
     ("Electronics & Telecommunication Engineering","Electronics & Telecommunication Engineering"),
@@ -17,8 +17,8 @@ choice2=(
     ("Manufacturing Solutions","Manufacturing Solutions"),
     ("Mechanical and Aerospace Engineering", "Mechanical and Aerospace Engineering"),
     ("Mechanical Engineering","Mechanical Engineering"),
-    ("Computer engineering","Computer engineering"),
-    ("Mechanis & Design","Mechanis & Design"),
+    ("Computer Engineering","Computer Engineering"),
+    ("Mechanics & Design","Mechanics & Design"),
     ("Power Electronics & Power Systems","Power Electronics & Power Systems"),
     ("Thermal Engineering","Thermal Engineering"),
     ("Mechanical","Mechanical"),
@@ -48,5 +48,14 @@ class  Questions(models.Model):
     stream= models.CharField(max_length=100,choices=choice)
     branch=models.CharField(max_length=100,choices=choice2)
     take=models.BooleanField(default=True)
+    def __str__(self):
+        return str(self.id)
+    
+class PrevQuestionPaperSet(models.Model):
+    id = models.BigAutoField(primary_key=True)
+    date=models.CharField(max_length=100) 
+    filename=models.FileField(upload_to='prevfiles')
+    stream= models.CharField(max_length=100,choices=choice)
+    branch=models.CharField(max_length=100,choices=choice2)
     def __str__(self):
         return str(self.id)

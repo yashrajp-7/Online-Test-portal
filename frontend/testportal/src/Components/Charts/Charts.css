@@ -1,3 +1,4 @@
+
 .dashboard-container {
     display: flex;
     flex-direction: column;
@@ -60,11 +61,12 @@
   }
 
   .all-chart-container{
-    background-color: #ffffff;
+    background-color:#fff;
     padding: 2vh 2vh 2vh 2vh;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    margin-top: 20px;
+    margin-left: 10%;
+    margin-top: 5%;
   }
 
   .outerchart

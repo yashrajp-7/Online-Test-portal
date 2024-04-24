@@ -1,5 +1,4 @@
 
-
 import React, { useState,useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -42,26 +41,14 @@ const toChart=()=>{
   return (
     <nav className="navbar">
       <div className="navbar-left">
-      <img  style={{height:"10%",width:"20%",padding:"0px"}} src={logo2} />
+      <img  style={{height:"10%",width:"20%",padding:"0px"}} src={logo2}/>
       </div>
-      <div className="navbar-left">
-        
-        
+      <div className="navbar-left46"style={{marginLeft:"-90%"}}>
+      <span><b>e<span className="letterY">S</span>pace- Intern</b></span>
       </div>
+      
       <div className="navbar-right">
       <span><b>Welcome, Admin!</b></span>
-          <button className="icon-button" title='Upload Questions' aria-label="Home" onClick={toPaper}>
-            <img src={paper} />
-          </button>
-      <button className="icon-button" title='Result' aria-label="result" onClick={toResult}>
-            <img src={res} />
-          </button>
-          <button className="icon-button" title='Statistics' aria-label="chart" onClick={toChart}>
-            <img src={chart} />
-          </button>
-      <button className="icon-button" title='Change Password' aria-label="password" onClick={topass}>
-          <img src={pas} />
-      </button>
       <button className="icon-button" title='Logout' aria-label="Logout" onClick={handleLogout}>
             <img src={logo} />
           </button>

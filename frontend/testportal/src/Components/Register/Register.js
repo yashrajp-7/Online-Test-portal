@@ -55,13 +55,14 @@ const Register = () => {
         "Computer Science Engineering",
         "Manufacturing Engineering and Industrial Management",
         "Mechanical and Aerospace Engineering",
-        "Computer engineering",
+        "Computer Engineering",
         "Manufacturing Solutions",
         "Design Engineering",
         "Thermal Engineering",
         "Applied Mechanics(Fluid Mechanics)",
-        "Artificial Intilligence & Machinie Learning",
-        "Mechanis & Design",
+
+        "Artificial Intelligence & Machine Learning",
+        "Mechanics & Design",
         "Power Electronics & Power Systems",
         
       ]);
@@ -235,7 +236,7 @@ const Register = () => {
     
 
     
-    axios.post('http://127.0.0.1:8000/signup/', formData, {
+    axios.post('https://arun2024.pythonanywhere.com/signup/', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -312,7 +313,7 @@ const Register = () => {
                       <option value="">Select Gender</option>
                       <option value="Female">Female</option>
                       <option value="Male">Male</option>
-                      <option value="Prefer not to say">Prefer not to say</option>
+                      
                     </select>
                 </div>
               </div>

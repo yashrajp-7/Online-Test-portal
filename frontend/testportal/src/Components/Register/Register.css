@@ -1,17 +1,13 @@
 .register {
-  /* display: flex;
-  flex-direction: column;
-  background: #fff;
-  align-items: center;
-  border-radius: 15px;
-  padding: 20px; */
+  
   background-color: #fff;
     border-radius: 15px;
     padding: 20px;
     padding-top: -1px;
     padding-right: -2px;
     text-align: center;
-    width: 847.36px; 
+    width: 50%;
+     
     height: max-content;
     border: 1px solid #dddfe2;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 8px 16px rgba(0, 0, 0, 0.1);
@@ -51,11 +47,14 @@
   color: #1d2129;
   margin: 2% 0;
   height:42px;
-  width: 400px;
+  /* width: 400px; */
+  width: 100%; 
+  max-width: 400px;
   padding: 10px, 228px, 10px, 10px;
   border-radius: 8px;
   gap:10px; 
 }
+
 .register input[type="text"] {
   border: none;
   background-color: #F2F2F2;
@@ -64,21 +63,26 @@
   font-family: Nunito Sans;
   margin: 2% 0;
   height:42px;
-  width: 400px;
+  /* width: 400px; */
+  width: 100%; 
+  max-width: 400px;
   padding: 10px, 228px, 10px, 10px;
   border-radius: 8px;
   gap:10px;
   font-size: 16px;
   
 }
- 
+
+/* ::placeholder{
+  color: red;
+} */
 
 
-.error {
+.error2 {
   color: red;
   text-align: left;
   margin: auto;
-  font-size: 16px;
+  font-size: 13px;
   padding: 0px 1rem;
 }
 
@@ -87,7 +91,8 @@ background-color: #ffc107;
   color: rgb(0, 0, 0);
   margin-top: 20px;
   font-family: Nunito Sans;
-   margin-left: 500px;
+   width: 100%;
+   max-width: 200px;
    font-size: 16px;
    font-weight: 700;
 
@@ -124,19 +129,25 @@ background-color: #ffc107;
   margin-bottom: 40px;
   font-family: Nunito Sans;
   /* width:700px; */
+  width: 100%; 
+  max-width: 400px;
   
 }
 
 .dropdown {
   
   font-family: Nunito Sans;
+  width: 100%; 
+  max-width: 400px;
   /* width:700px; */
 }
 .fileuppload
 {
   margin-right: 0px;
   align-items:normal;
-  width: 50%;
+  /* width: 50%; */
+  width: 100%; 
+  max-width: 400px;
   font-family: Nunito Sans;
   
 }
@@ -174,5 +185,31 @@ background-color: #ffc107;
 
 .fileuppload{
   margin-left: 20px;
-  
+}
+
+.heading{
+  margin-right: 25%;
+  text-align: center;
+  font-family: Nunito Sans;
+}
+
+
+@media screen and (max-width: 768px) {
+  .register {
+    width: 90%;
+  }
+
+  .gridContainer {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .register {
+    width: 90%;
+  }
+
+  .gridContainer {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 }

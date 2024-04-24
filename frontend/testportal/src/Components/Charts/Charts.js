@@ -7,6 +7,7 @@ import { useState,useEffect } from 'react';
 import Navbar from "../Admin/Navbar";
 import axios from "axios";
 import { Dropdown } from 'primereact/dropdown';
+import Cmenu from './Cmenu';
 
 const Charts = () => {
     const [tableData, setTableData] = useState([]);
@@ -29,7 +30,7 @@ const Charts = () => {
       useEffect(async() => {
         let res = [];
             try {
-                const response = await axios.get('http://127.0.0.1:8000/submit/result/');
+                const response = await axios.get('https://arun2024.pythonanywhere.com/submit/result/');
                 console.log(response.data.message);
                 res=response.data.message
                 setTableData(res)
@@ -328,6 +329,7 @@ const Charts = () => {
   return (
     <div className="outerchart" style={{height:"100%",width:"100%"}}>
        <Navbar/> 
+       <Cmenu/>
     <div className="dashboard-container" style={{height:"100%",width:"100%"}}>
  
         <div className="all-chart-container">

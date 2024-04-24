@@ -4,7 +4,7 @@ from .models import Questions
 from django.http import JsonResponse
 from rest_framework.response import Response
 import pandas as pd
-from quizquestions.models import Questions
+from quizquestions.models import Questions, PrevQuestionPaperSet
 import datetime
 import json
 # Create your views here.
@@ -38,9 +38,14 @@ def home(request):
    if(request.method == 'POST'):
       df = pd.read_excel(request.FILES['question'])
       print(request.FILES['question'].name)
+      stream = request.POST.get('stream')
+      branch = request.POST.get('branch')
       date=datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+      fileSave = PrevQuestionPaperSet(date=date, filename=request.FILES['question'],stream=stream,branch=branch)
+      fileSave.save()
+      Questions.objects.filter(stream=stream, branch=branch).delete()
       for i in range(len(df)):
-         query=Questions(date=date,filename=request.FILES['question'].name,question=df.iloc[i, 0],option1=df.iloc[i, 1],option2=df.iloc[i, 2],option3=df.iloc[i, 3],option4=df.iloc[i, 4],answer=df.iloc[i, 5],stream=request.POST.get('stream'),branch=request.POST.get('branch'))
+         query=Questions(date=date,filename=request.FILES['question'].name,question=df.iloc[i, 0],option1=df.iloc[i, 1],option2=df.iloc[i, 2],option3=df.iloc[i, 3],option4=df.iloc[i, 4],answer=df.iloc[i, 5],stream=stream,branch=branch)
          query.save()
       return JsonResponse({'message':"questions saved successfully!!!"})
    else:
@@ -50,30 +55,18 @@ def home(request):
 @api_view(['GET', 'POST'])
 @csrf_exempt 
 def questionset(request):
-   if(request.method=='GET'):
-      q=df = pd.DataFrame(list(Questions.objects.all().values('date','filename','stream','branch','take')))
-      print(q)
-      df = q.drop_duplicates()
-      print(df)
-      res=list()
-      for i in df.index:
-         d=dict()
-         d['date']=df['date'][i]
-         d['filename']=df['filename'][i]
-         d['stream']=df['stream'][i]
-         d['branch']=df['branch'][i]
-         if(df['take'][i]):
-            d['take']=True
-         else:
-            d['take']=False
-         res.append(d)
-      print(res)
-      return JsonResponse({'message': res})
-   if(request.method=='POST'):
-      data=json.loads(request.body)
-      print(data)
-      for i in data:
-         q=Questions.objects.filter(date=i['date'],filename=i['filename'],stream=i['stream'],branch=i['branch']).values()
-         q.update(take=i['take'])
-         print(q)
-      return JsonResponse({'message': 'Modification in question set is done!!!'})
+   if(request.method == "GET"):
+        queryset = PrevQuestionPaperSet.objects.all().values()
+        res=[]
+        for i in queryset:
+            d={
+                "Date":i['date'],
+                "Filename":i['filename'],
+                "Stream":i['stream'],
+                "Branch":i['branch'],
+                "Ques_Link":("http://127.0.0.1:8000/media/" + i['filename'])
+               #  "Ques_Link":("http://127.0.0.1:8000/media/"+i['prevfiles'])
+            } 
+            res.append(d)
+     
+        return JsonResponse({'message':res})

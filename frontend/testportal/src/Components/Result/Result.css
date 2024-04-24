@@ -1,38 +1,84 @@
-
-h1{
+.h1class{
   text-align: center;
+  /* margin-left: 10%; */
+  font-family: Nunito Sans;
+  margin-top: 100px;
 }
-
   .downloadresult
   {
     margin-left: 93%;
     margin-bottom: 1%;
     background-color: green;
+    font-family: Nunito Sans;
   }
-
-  
+  /* .table-res{
+    height: max-content;
+    width:min-content;
+    display: flex;
+    margin-left: 300px;
+    margin-top: 20px;
+  } */
+/*   
   .mainResult {
     width: 100%;
     box-sizing: border-box;
+  } */
+  .table-res {
+    width: 90%; 
+    overflow-x: hidden;
+  }
+  .mainResult {
+    display: flex;
   }
   
   /* Responsive styles for the DataTable */
-  .p-datatable-wrapper {
+  /* .p-datatable-wrapper {
     height:calc(5*90px);
-    overflow-x: auto; /* Horizontal scrolling for the DataTable */
-    max-width: 100%; /* Ensure the DataTable wrapper doesn't exceed viewport width */
+    overflow-x: auto; 
+    max-width: 100%; 
     overflow-y: auto;
-  }
+  } */
+  /* .p-datatable-wrapper {
+    overflow-x: hidden; 
+  } */
   
   /* Responsive styles for the DataTable */
-  .p-datatable {
-    min-width: 100%; /* Ensure DataTable takes full width of its container */
-  }
+  /* .p-datatable {
+    min-width: 100%; 
+    } */
   
   /* Responsive styles for the columns */
   .p-datatable table thead th,
   .p-datatable table tbody td {
-    white-space: nowrap; /* Prevent text wrapping */
-    text-overflow: ellipsis; /* Add ellipsis if text overflows */
+    white-space: nowrap; 
+    text-overflow: ellipsis; 
     overflow: hidden;
+  } 
+  .table-container {
+    overflow-y: fixed; 
+    padding-left:30px; 
+    font-family: Nunito Sans;
+  }
+  
+  .menuR {
+    width: 230px; 
+    position: fixed;
+    /* height: 100%;  */
+    background-color: #fff; 
+    /* overflow-y: auto;  */
+    font-family: Nunito Sans;
+    /* z-index: 1; */
+  }
+  
+  .content {
+    flex-grow: 1; 
+    padding-left:240px; 
+    font-family: Nunito Sans;
+    overflow-y: hidden;
+    /* overflow-x: hidden; */
+  }
+
+  .p-datatable {
+    min-width: 90%; 
+    overflow-x: scroll;
   }

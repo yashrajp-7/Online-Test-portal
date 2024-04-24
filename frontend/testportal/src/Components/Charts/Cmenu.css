@@ -1,0 +1,60 @@
+/* Sidebar / Big
+
+position: absolute;
+width: 256px;
+height: 1417px;
+left: 0px;
+top: 0px;
+
+background: #FFFFFF;
+
+
+19 Homepage
+
+position: relative;
+width: 1440px;
+height: 1417px;
+
+background: #F5F5F5; */
+
+.icon-button3 {
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 40px;
+    width: 40px; 
+    height: 40px;
+    margin-left: 10px;
+    border-radius: 50%; 
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 3px;
+    transition: background-color 0.3s ease;
+    font-family: Nunito Sans;
+}
+.icon-button3 img {
+    width: 40px; 
+    height: 35px; 
+    /* border-radius: 50%;  */
+}
+.menu3 {
+    position: absolute;
+    width: 256px;
+    height: 1400px;
+    background: #FFFFFF;
+    position: fixed;
+    cursor: pointer;
+    font-family: Nunito Sans;
+}
+.icons3{
+    margin-top: 100px;
+    flex-direction: column;
+    display: grid;
+    grid-template-columns: auto 1fr; 
+    gap: 10px; 
+    align-items: center;
+}
+/* .icon-label3{
+    color: black;
+    font-size: 18px;
+} */
